@@ -1,7 +1,0 @@
-@charset "utf-8";
-/* CSS Document */
-.breadcrumb > li + li:before {
-	color: #CCCCCC;
-	content: "| ";
-	padding: 0 5px;
-}

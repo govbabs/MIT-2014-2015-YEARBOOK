@@ -11,10 +11,21 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => 'web'], function () {
+    Route::get('/register', [
+        'uses' => 'Auth\AuthController@getRegister',
+        'as' => 'auth.register',
+        'middleware' => ['guest']
+    ]);
+
+    Route::get('/', [
+        'uses' => 'Auth\AuthController@getLogin',
+        'as' => 'auth.login',
+        'middleware' => ['guest']
+    ]);
+});
+/*Route::get('/', function () {
+    return view('auth.login');
 });
 
-Route::auth();
-
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index');*/
