@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use Validator;
+use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller{
     /*
@@ -34,8 +36,7 @@ class AuthController extends Controller{
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct(){
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
@@ -45,26 +46,63 @@ class AuthController extends Controller{
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+    protected function validator(array $data){
+        $niceNames = array(
+            'first_name' => 'First Name',
+            'last_name' => 'Last Name',
+            'email' => 'Email',
+            'password' => 'Password',
+            'username' => 'Username',
+            'agreement' => 'Agreement'
+        );
+
+        $validator = Validator::make($data, [
+            'username' => 'required|max:255',
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:mit_users',
             'password' => 'required|min:6|confirmed',
+            'agreement' => 'required',
         ]);
+
+        $validator->setAttributeNames($niceNames);
+
+        return $validator;
     }
 
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        $this->create($request->all());
+
+        return redirect($this->redirectPath());
+    }
     /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data)
-    {
+    protected function create(array $data){
         return User::create([
-            'name' => $data['name'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'username' => $data['username'],
             'email' => $data['email'],
+            'role' => 'user',
             'password' => bcrypt($data['password']),
         ]);
     }

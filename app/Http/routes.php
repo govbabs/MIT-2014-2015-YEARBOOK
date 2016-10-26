@@ -18,6 +18,11 @@ Route::group(['middleware' => 'web'], function () {
         'middleware' => ['guest']
     ]);
 
+    Route::post('/register', [
+        'uses' => 'Auth\AuthController@postRegister',
+        'middleware' => ['guest']
+    ]);
+
     Route::get('/', [
         'uses' => 'Auth\AuthController@getLogin',
         'as' => 'auth.login',
