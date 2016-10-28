@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class AuthController extends Controller{
     /*
@@ -88,11 +89,11 @@ class AuthController extends Controller{
         }
 
         $token = $this->getToken();
-        $this->create($request->all(), $token);
-        Mail::send('email.verify',
-            array('body' => $this->getConfirmationMail($token)),
-            function($message) use ($request) {
-                $message->to($request->input('email'), $request->input('username'))
+        $registeredUser = $this->create($request->all(), $token);
+        Mail::queue('email.verify',
+            ['body' => $this->getConfirmationMail($token)],
+            function($message) use($registeredUser) {
+                $message->to($registeredUser->email, $registeredUser->username)
                 ->subject('Verify your email address');
         });
 
@@ -134,7 +135,7 @@ class AuthController extends Controller{
     private function getConfirmationMail($token){
         return "<h2 align='center'>Verify Your Email Address</h2>
         <div>
-            Thanks for creating an account with the MIT E-year Book.
+            Thanks for creating an account with MIT E-year Book.
             Please follow the link below to verify your email address
             " . url('register/verify/'. $token) . ".
         </div>";

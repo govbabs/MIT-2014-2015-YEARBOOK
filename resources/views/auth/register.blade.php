@@ -24,6 +24,11 @@
                                     </ul>
                                 </div>
                             @endif
+                            @if (session('status'))
+                                <div class="alert alert-success">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
                             <form role="form" action="{{ url('/register') }}" method="post" novalidate>
                                 {{ csrf_field() }}
                                 <div class="form-group">
