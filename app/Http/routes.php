@@ -12,6 +12,12 @@
 */
 
 Route::group(['middleware' => 'web'], function () {
+
+  Route::get('/{matricNo}', [
+      'uses' => 'UserController@getUserByMatricNumber',
+      'as' => 'userProfile',
+      'middleware' => ['guest']
+  ])->where('matricNo', '[0-9]+');
     Route::get('/register', [
         'uses' => 'Auth\AuthController@getRegister',
         'as' => 'auth.register',

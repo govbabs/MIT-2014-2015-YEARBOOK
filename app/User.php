@@ -6,6 +6,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+
+  public function __construct()
+	{
+		$this->middleware('auth');
+	}
     /**
      * The table associated with the model.
      *
