@@ -23,12 +23,9 @@ Route::group(['middleware' => 'web'], function () {
         'middleware' => ['guest']
     ]);
 
-    Route::get('/register/verify/{token}', [
-        'uses' => 'Auth\AuthController@validateToken',
-        'middleware' => ['guest']
-    ]);
+    Route::get('/register/verify/{token}', [ 'uses' => 'Auth\AuthController@validateToken' ]);
 
-    Route::get('/', [
+    Route::get('/login', [
         'uses' => 'Auth\AuthController@getLogin',
         'as' => 'auth.login',
         'middleware' => ['guest']

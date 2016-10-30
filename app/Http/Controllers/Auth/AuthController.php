@@ -100,8 +100,14 @@ class AuthController extends Controller{
     }
 
     public function validateToken($token){
-        print($token);
-        //User::
+        $user = User::where('token', $token)->first();
+        if(is_null($user)){
+            return redirect('/login')->with('warning', 'Unable to validate user');
+        } else {
+            $user->activated = true;
+            $user->save();
+            return redirect('/login')->with('status', 'Email Verified');
+        }
     }
 
     /**
