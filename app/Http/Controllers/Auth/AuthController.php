@@ -78,8 +78,7 @@ class AuthController extends Controller{
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function register(Request $request)
-    {
+    public function register(Request $request){
         $validator = $this->validator($request->all());
 
         if ($validator->fails()) {
@@ -98,6 +97,11 @@ class AuthController extends Controller{
         });
 
         return redirect()->back()->with('status', 'We sent you an activation code. Check your email.');
+    }
+
+    public function validateToken($token){
+        print($token);
+        //User::
     }
 
     /**
