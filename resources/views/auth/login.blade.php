@@ -24,7 +24,7 @@
                                     {{ session('status') }}
                                 </div>
                             @endif
-                            <form role="form" action="{{ url('/register') }}" method="post" novalidate>
+                            <form role="form" action="{{ url('/login') }}" method="post" novalidate>
                                 {{ csrf_field() }}
                                 <div class="form-group">
                                     <div class="form-control-material">
@@ -41,8 +41,8 @@
                                     </div>
                                 </div>
                                 <div class="text-right">
-                                    <a href="" class="btn btn-primary text-right">Login
-                                        <i class="fa fa-fw fa-unlock-alt"></i></a>
+                                    <button type="submit" class="btn btn-primary text-right">Login
+                                        <i class="fa fa-fw fa-unlock-alt"></i></button>
                                 </div>
                             </form>
                         </div>

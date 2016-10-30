@@ -98,6 +98,7 @@ class AuthController extends Controller{
             return redirect('/login')->with('warning', 'Unable to validate user');
         } else {
             $user->activated = true;
+            $user->token = '';
             $user->save();
             return redirect('/login')->with('status', 'Email Verified');
         }
@@ -113,14 +114,26 @@ class AuthController extends Controller{
             'password' => 'required'
         ]);
 
-        if (!Auth::attempt([
+        if (Auth::guard()->attempt([
             'username' => $request->input('username'),
-            'password' => $request->input('password'),
+            'password' => $request->input('password')])) {
 
-        ])){
-            return redirect()->back()->with('error', 'Invalid Login Details');
+            return $this->authenticated($request, Auth::user());
         }
-        return redirect($this->redirectTo);
+    }
+
+    public function authenticated(Request $request, $user){
+        if (!$user->activated) {
+            $this->sendActivationMail($user);
+            Auth::logout();
+            return back()->with('warning',
+                'You need to confirm your account. We have sent you an activation code, please check your email.');
+        } else if(!$user->active) {
+            Auth::logout();
+            return back()->with('warning',
+                'Administrator need to approve your account.Please check back.Thanks.');
+        }
+        return redirect()->intended('/');
     }
 
     protected function sendActivationMail($registeredUser){
