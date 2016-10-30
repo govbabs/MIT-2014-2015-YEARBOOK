@@ -28,13 +28,14 @@
                                 {{ csrf_field() }}
                                 <div class="form-group">
                                     <div class="form-control-material">
-                                        <input class="form-control" id="username" type="text" placeholder="Enter your Matric Number here">
+                                        <input class="form-control" id="username" name="username" type="text"
+                                               placeholder="Enter your Matric Number here">
                                         <label for="username">Username</label>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="form-control-material">
-                                        <input class="form-control" id="password" type="password"
+                                        <input class="form-control" id="password" name="password" type="password"
                                                placeholder="Enter Password">
                                         <label for="password">Password</label>
                                     </div>

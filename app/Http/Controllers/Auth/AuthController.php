@@ -87,15 +87,8 @@ class AuthController extends Controller{
             );
         }
 
-        $token = $this->getToken();
-        $registeredUser = $this->create($request->all(), $token);
-        Mail::queue('email.verify',
-            ['body' => $this->getConfirmationMail($token)],
-            function($message) use($registeredUser) {
-                $message->to($registeredUser->email, $registeredUser->username)
-                ->subject('Verify your email address');
-        });
-
+        $registeredUser = $this->create($request->all());
+        $this->sendActivationMail($registeredUser);
         return redirect()->back()->with('status', 'We sent you an activation code. Check your email.');
     }
 
@@ -111,18 +104,50 @@ class AuthController extends Controller{
     }
 
     /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function postLogin(Request $request){
+        $this->validate($request, [
+            'username' => 'required',
+            'password' => 'required'
+        ]);
+
+        if (!Auth::attempt([
+            'username' => $request->input('username'),
+            'password' => $request->input('password'),
+
+        ])){
+            return redirect()->back()->with('error', 'Invalid Login Details');
+        }
+        return redirect($this->redirectTo);
+    }
+
+    protected function sendActivationMail($registeredUser){
+        $token = $this->getToken();
+        //update activation code for user
+        $registeredUser->token = $token;
+        $registeredUser->save();
+
+        Mail::queue('email.verify',
+            ['body' => $this->getConfirmationMail($token)],
+            function($message) use($registeredUser) {
+                $message->to($registeredUser->email, $registeredUser->username)
+                    ->subject('Verify your email address');
+            });
+    }
+    /**
      * Create a new user instance after a valid registration.
      * @param  array  $data
      * @param   $token
      * @return User
      */
-    protected function create(array $data, $token){
+    protected function create(array $data){
         return User::create([
             'first_name'    => $data['first_name'],
             'last_name'     => $data['last_name'],
             'username'      => $data['username'],
             'email'         => $data['email'],
-            'token'         => $token,
             'role'          => 'user',
             'password'      => bcrypt($data['password']),
         ]);

@@ -30,9 +30,11 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'auth.login',
         'middleware' => ['guest']
     ]);
-});
-/*Route::get('/', function () {
-    return view('auth.login');
+
+    Route::post('/login', [
+        'uses' => 'Auth\AuthController@postLogin',
+        'middleware' => ['guest']
+    ]);
 });
 
-Route::get('/home', 'HomeController@index');*/
+/*Route::get('/home', 'HomeController@index');*/
