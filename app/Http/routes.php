@@ -13,11 +13,13 @@
 
 Route::group(['middleware' => 'web'], function () {
 
-  Route::get('/{matricNo}', [
-      'uses' => 'UserController@getUserByMatricNumber',
-      'as' => 'userProfile',
-      'middleware' => ['guest']
-  ])->where('matricNo', '[0-9]+');
+
+      Route::get('/{matricNo}', [
+          'uses' => 'UserController@getUserByMatricNumber',
+          'as' => 'userProfile',
+          'middleware' => ['guest']
+      ])->where('matricNo', '[0-9]+');
+
     Route::get('/register', [
         'uses' => 'Auth\AuthController@getRegister',
         'as' => 'auth.register',
@@ -40,6 +42,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/login', [
         'uses' => 'Auth\AuthController@postLogin',
         'middleware' => ['guest']
+    ]);
+
+    Route::post('/', [
+        'uses' => 'Auth\AuthController@postLogin',
+        'middleware' => ['auth']
     ]);
 });
 
