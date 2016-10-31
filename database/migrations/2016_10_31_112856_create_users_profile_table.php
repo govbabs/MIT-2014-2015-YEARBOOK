@@ -16,6 +16,7 @@ class CreateUsersProfileTable extends Migration
             $table->increments('profile_id');
             $table->integer('user_id')->unsigned();
             $table->text('description'); //personal message about students
+            $table->string('imgPath');
             $table->timestamps();
             $table->foreign('user_id')->references('user_id')->on('mit_users')->onDelete('cascade')->onUpdate('cascade');
         });
