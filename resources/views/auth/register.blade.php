@@ -34,8 +34,15 @@
                                 <div class="form-group">
                                     <div class="form-control-material">
                                         <input type="text" class="form-control" name="username"
-                                               placeholder="Enter your Matric Number here" id="username">
+                                               placeholder="Enter your Username here" id="username">
                                         <label for="username">Username</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-control-material">
+                                        <input type="text" class="form-control" name="matricnum"
+                                               placeholder="Enter your Matric Number here" id="matricnum">
+                                        <label for="username">Matric Nos</label>
                                     </div>
                                 </div>
                                 <div class="form-group">
