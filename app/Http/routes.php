@@ -44,10 +44,14 @@ Route::group(['middleware' => 'web'], function () {
         'middleware' => ['guest']
     ]);
 
+    Route::get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
+
     Route::post('/', [
         'uses' => 'Auth\AuthController@postLogin',
         'middleware' => ['auth']
     ]);
+
+
 });
 
 /*Route::get('/home', 'HomeController@index');*/

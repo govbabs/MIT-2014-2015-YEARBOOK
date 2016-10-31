@@ -51,7 +51,7 @@
                                 <li><a href="{{ Route('auth.register') }}"
                                        class="link-text-color">Create account</a></li>
                                 <li class="forgot-password">
-                                    <a href="recover.blade.php">Forgot password?</a>
+                                    <a href="{{ url('/password/reset') }}">Forgot password?</a>
                                 </li>
                                 <li class="active">About this project</li>
                             </ol>
