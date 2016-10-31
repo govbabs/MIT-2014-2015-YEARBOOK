@@ -8,7 +8,9 @@ use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class AuthController extends Controller{
     /*
@@ -57,7 +59,7 @@ class AuthController extends Controller{
         );
 
         $validator = Validator::make($data, [
-            'username' => 'required|max:255',
+            'username' => 'required|max:255|unique:mit_users',
             'first_name' => 'required|max:255',
             'last_name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:mit_users',
@@ -76,8 +78,7 @@ class AuthController extends Controller{
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function register(Request $request)
-    {
+    public function register(Request $request){
         $validator = $this->validator($request->all());
 
         if ($validator->fails()) {
@@ -86,24 +87,105 @@ class AuthController extends Controller{
             );
         }
 
-        $this->create($request->all());
+        $registeredUser = $this->create($request->all());
+        $this->sendActivationMail($registeredUser);
+        return redirect()->back()->with('status', 'We sent you an activation code. Check your email.');
+    }
 
-        return redirect($this->redirectPath());
+    public function validateToken($token){
+        $user = User::where('token', $token)->first();
+        if(is_null($user)){
+            return redirect('/login')->with('warning', 'Unable to validate user');
+        } else {
+            $user->activated = true;
+            $user->token = '';
+            $user->save();
+            return redirect('/login')->with('status', 'Email Verified');
+        }
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function postLogin(Request $request){
+        $this->validate($request, [
+            'username' => 'required',
+            'password' => 'required'
+        ]);
+
+        if (Auth::guard()->attempt([
+            'username' => $request->input('username'),
+            'password' => $request->input('password')])) {
+
+            return $this->authenticated($request, Auth::user());
+        }
+    }
+
+    public function authenticated(Request $request, $user){
+        if (!$user->activated) {
+            $this->sendActivationMail($user);
+            Auth::logout();
+            return back()->with('warning',
+                'You need to confirm your account. We have sent you an activation code, please check your email.');
+        } else if(!$user->active) {
+            Auth::logout();
+            return back()->with('warning',
+                'Administrator need to approve your account.Please check back.Thanks.');
+        }
+        return redirect()->intended('/');
+    }
+
+    protected function sendActivationMail($registeredUser){
+        $token = $this->getToken();
+        //update activation code for user
+        $registeredUser->token = $token;
+        $registeredUser->save();
+
+        Mail::queue('email.verify',
+            ['body' => $this->getConfirmationMail($token)],
+            function($message) use($registeredUser) {
+                $message->to($registeredUser->email, $registeredUser->username)
+                    ->subject('Verify your email address');
+            });
     }
     /**
      * Create a new user instance after a valid registration.
-     *
      * @param  array  $data
+     * @param   $token
      * @return User
      */
     protected function create(array $data){
         return User::create([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'username' => $data['username'],
-            'email' => $data['email'],
-            'role' => 'user',
-            'password' => bcrypt($data['password']),
+            'first_name'    => $data['first_name'],
+            'last_name'     => $data['last_name'],
+            'username'      => $data['username'],
+            'email'         => $data['email'],
+            'role'          => 'user',
+            'password'      => bcrypt($data['password']),
         ]);
+    }
+
+    /**
+     * Generate Confirmation token
+     * @return string
+     *
+     */
+    private function getToken(){
+        return hash_hmac('sha256', str_random(40), config('app.key'));
+    }
+
+    /**
+     * get Confirmation Mail text
+     * @param $token
+     * @return string
+     */
+    private function getConfirmationMail($token){
+        return "<h2 align='center'>Verify Your Email Address</h2>
+        <div>
+            Thanks for creating an account with MIT E-year Book.
+            Please follow the link below to verify your email address
+            " . url('register/verify/'. $token) . ".
+        </div>";
     }
 }

@@ -34,6 +34,13 @@ return [
             'driver' => 'sync',
         ],
 
+        'iron' => [
+            'driver'  => 'iron',
+            'project' => '5813cabbd9cc19000737b718',
+            'token'   => 'm6izx40VPdzewUFETbXs',
+            'queue'   => 'laravel',
+        ],
+
         'database' => [
             'driver' => 'database',
             'table' => 'jobs',

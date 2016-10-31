@@ -7,8 +7,13 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
+<<<<<<< HEAD
         "maatwebsite/excel": "~2.1.0",
         "fzaninotto/faker": "^1.6"
+=======
+        "fzaninotto/faker": "^1.6",
+        "iron-io/iron_mq": "~1.5"
+>>>>>>> 7b0baeddf398de178b97e6530e8e981c84ff1620
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",

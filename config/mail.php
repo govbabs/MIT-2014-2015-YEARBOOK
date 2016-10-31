@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => "iamraphson@unilagmit.com", 'name' => 'MIT E-year Book'],
 
     /*
     |--------------------------------------------------------------------------
