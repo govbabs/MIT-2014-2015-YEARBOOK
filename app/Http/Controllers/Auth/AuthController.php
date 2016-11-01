@@ -32,7 +32,6 @@ class AuthController extends Controller{
      * @var string
      */
     protected $redirectTo = '/';
-
     /**
      * Create a new authentication controller instance.
      *
@@ -172,7 +171,7 @@ class AuthController extends Controller{
      * @return string
      *
      */
-    private function getToken(){
+    public function getToken(){
         return hash_hmac('sha256', str_random(40), config('app.key'));
     }
 
