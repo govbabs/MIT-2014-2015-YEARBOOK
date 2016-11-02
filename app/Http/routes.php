@@ -13,12 +13,29 @@
 
 Route::group(['middleware' => 'web'], function () {
 
+    //Administrator Routes
+    Route::get('/admin', [
+        'uses' => 'AdminController@index',
+        'as' => 'adminProfile'
+    ])->where('matricNo', '[0-9]+');
+
+
+    Route::get('/students', [
+        'uses' => 'AdminController@getAllStudents',
+        'as' => 'admin.students'
+    ])->where('matricNo', '[0-9]+');
+    //end of admin routes
 
       Route::get('/{matricNo}', [
           'uses' => 'UserController@getUserByMatricNumber',
           'as' => 'userProfile',
           'middleware' => ['guest']
       ])->where('matricNo', '[0-9]+');
+
+      Route::get('/edit/{id}', [
+          'uses' => 'UserController@edit',
+          'as' => 'student.edit'
+      ]);
 
     Route::get('/register', [
         'uses' => 'Auth\AuthController@getRegister',

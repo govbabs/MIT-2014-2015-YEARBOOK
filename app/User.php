@@ -4,15 +4,10 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable{
+class User extends Authenticatable
+{
 
-    /**
-     * The primary key for the model.
-     *
-     * @var string
-     */
-    protected $primaryKey = 'user_id';
-
+protected $primaryKey = 'user_id';
     /**
      * The table associated with the model.
      *
@@ -26,7 +21,7 @@ class User extends Authenticatable{
      * @var array
      */
     protected $fillable = [
-        'username', 'first_name', 'last_name', 'email', 'password', 'token', 'matricNo'
+        'username', 'first_name', 'last_name', 'email', 'password'
     ];
 
     /**
