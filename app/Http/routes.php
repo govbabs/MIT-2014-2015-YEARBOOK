@@ -13,6 +13,23 @@
 
 Route::group(['middleware' => 'web'], function () {
 
+    /**
+     *
+     * Uncle matthew routes(Administrator Routes)
+     */
+        Route::get('/admin', [
+            'uses' => 'AdminController@index',
+            'as' => 'adminProfile'
+        ])->where('matricNo', '[0-9]+');
+
+
+        Route::get('/students', [
+            'uses' => 'AdminController@getAllStudents',
+            'as' => 'admin.students'
+        ])->where('matricNo', '[0-9]+');
+    /**
+     * End of Administrator route
+     */
 
       Route::get('/{matricNo}', [
           'uses' => 'UserController@getUserByMatricNumber',
@@ -20,6 +37,14 @@ Route::group(['middleware' => 'web'], function () {
           'middleware' => ['guest']
       ])->where('matricNo', '[0-9]+');
 
+      Route::get('/edit/{id}', [
+          'uses' => 'UserController@edit',
+          'as' => 'student.edit'
+      ]);
+
+    /**
+     * iamraphson's route (Don't touch..thanks)
+     */
     Route::get('/register', [
         'uses' => 'Auth\AuthController@getRegister',
         'as' => 'auth.register',
@@ -48,12 +73,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
     Route::post('password/reset', 'Auth\PasswordController@reset');
 
-    Route::post('/', [
-        'uses' => 'Auth\AuthController@postLogin',
-        'middleware' => ['auth']
-    ]);
-
-
+    /**
+     * End of iamraphson's routes
+     */
 });
-
-/*Route::get('/home', 'HomeController@index');*/
