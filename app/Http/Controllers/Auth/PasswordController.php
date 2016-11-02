@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\User;
 use DB;
+use Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
@@ -58,14 +59,22 @@ class PasswordController extends Controller
     }
 
     protected function findOrCreateUser($user){
-        $resetUser = DB::table('password_resets')->where('email',  $user->email)->get();
-        if ($resetUser){
-            return array($resetUser[0]->email, $resetUser[0]->token);
-        }
+        DB::table('password_resets')->where('email',  $user->email)->delete();
         $token = (new AuthController())->getToken();
         DB::table('password_resets')->insert(
             ['email' => $user->email, 'token' => $token]
         );
         return array($user->email, $token);
+    }
+
+    /**
+     * Get the response for after a successful password reset.
+     *
+     * @param  string  $response
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    protected function getResetSuccessResponse($response){
+        Auth::logout();
+        return redirect('/login')->with('status', trans($response));
     }
 }
