@@ -1,70 +1,81 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
+@section('title')
+    Reset Password
+@endsection
+
+        <!-- Main Content -->
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
-
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/reset') }}">
-                        {{ csrf_field() }}
-
-                        <input type="hidden" name="token" value="{{ $token }}">
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ $email or old('email') }}">
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <section class="panel panel-default paper-shadow" data-z="0.5">
+                    <div class="panel-heading">
+                        <h1 class="margin-none">Recover Password</h1>
+                    </div>
+                    <div class="panel-body">
+                        @if (count($errors) > 0)
+                            <div class="alert alert-danger">
+                                <ul class="list-unstyled">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password">
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
+                        @endif
+                        @if (session('warning'))
+                            <div class="alert alert-warning">
+                                {!! session('warning') !!}
                             </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
-
-                                @if ($errors->has('password_confirmation'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                    </span>
-                                @endif
+                        @endif
+                        @if (session('status'))
+                            <div class="alert alert-success">
+                                {{ session('status') }}
                             </div>
-                        </div>
+                        @endif
+                        <form role="form" action="{{ url('/password/reset') }}" method="post" novalidate>
+                            {!! csrf_field() !!}
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-refresh"></i> Reset Password
-                                </button>
+                            <input type="hidden" name="token" value="{{ $token }}">
+                            <div class="form-group">
+                                <div class="form-control-material">
+                                    <input class="form-control" id="email" type="email" name="email"
+                                       placeholder="Enter your Username here" value="{{ $email or old('email') }}">
+                                    <label for="email">Email Address</label>
+                                </div>
                             </div>
-                        </div>
-                    </form>
-                </div>
+                            <div class="form-group">
+                                <div class="form-control-material">
+                                    <input class="form-control" id="password" type="password" name="password"
+                                           placeholder="Enter your password here">
+                                    <label for="password">Password</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-control-material">
+                                    <input class="form-control" id="password_confirmation" type="password"
+                                           name="password_confirmation"
+                                           placeholder="Enter your Username here">
+                                    <label for="password_confirmation">Confirm Password</label>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-primary text-righ">Reset Password
+                                    <i class="fa fa-fw fa-unlock-alt"></i></button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="text-center">
+                        <ol class="breadcrumb">
+                            <li><a href="{{ url('/login') }}" class="link-text-color">
+                                    <i class="fa fa-fw fa-chevron-left"></i>Cancel and go back to login page.</a></li>
+                        </ol>
+                    </div>
+                </section>
             </div>
+            <div class="col-md-4"></div>
         </div>
     </div>
-</div>
 @endsection
