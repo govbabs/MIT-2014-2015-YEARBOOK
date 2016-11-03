@@ -19,7 +19,7 @@ Route::group(['middleware' => 'web'], function () {
      */
     Route::group(['roles' => ['admin'], 'middleware' => ['auth', 'roles']], function () {
         /**
-         * uncle matthew routes in this place
+         * uncle matthew routes goes here
          */
         Route::get('/admin', [
             'uses' => 'AdminController@index',
