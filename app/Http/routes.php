@@ -17,6 +17,10 @@ Route::group(['middleware' => 'web'], function () {
      *
      * Uncle matthew routes(Administrator Routes)
      */
+    Route::group(['roles' => ['admin'], 'middleware' => ['auth', 'roles']], function () {
+        /**
+         * uncle matthew routes in this place
+         */
         Route::get('/admin', [
             'uses' => 'AdminController@index',
             'as' => 'adminProfile'
@@ -27,20 +31,10 @@ Route::group(['middleware' => 'web'], function () {
             'uses' => 'AdminController@getAllStudents',
             'as' => 'admin.students'
         ])->where('matricNo', '[0-9]+');
+    });
     /**
      * End of Administrator route
      */
-
-      Route::get('/{matricNo}', [
-          'uses' => 'UserController@getUserByMatricNumber',
-          'as' => 'userProfile',
-          'middleware' => ['guest']
-      ])->where('matricNo', '[0-9]+');
-
-      Route::get('/edit/{id}', [
-          'uses' => 'UserController@edit',
-          'as' => 'student.edit'
-      ]);
 
     /**
      * iamraphson's route (Don't touch..thanks)
@@ -73,6 +67,12 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
     Route::post('password/reset', 'Auth\PasswordController@reset');
 
+    Route::group(['roles' => ['admin', 'user'], 'middleware' => ['auth', 'roles']], function () {
+        /**
+         * all normal user routes is kept here...
+         */
+        Route::get('/', 'HomeController@index');
+    });
     /**
      * End of iamraphson's routes
      */
