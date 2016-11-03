@@ -37,4 +37,16 @@ class User extends Authenticatable{
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getRole(){
+        return $this->role;
+    }
+
+    public function hasRole($role)
+    {
+        if (is_array($role)) {
+            return in_array($this->attributes['role'], $role);
+        }
+        return $this->attributes['role'] == $role;
+    }
 }
