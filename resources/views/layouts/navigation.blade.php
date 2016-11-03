@@ -33,17 +33,20 @@
           <!-- user -->
           <li class="dropdown user active">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="images/chid.jpg" alt="" class="img-circle" /> {{Auth::user()->first_name}}<span class="caret"></span>
+              <img src="images/chid.jpg" alt="" class="img-circle" />
+              {{ Auth::user()->username }}<span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
 
               <li><a href="student-profile.blade.php"><i class="fa fa-user"></i> Profile</a></li>
-              <li><a href="login.blade.php"><i class="fa fa-sign-out"></i> Logout</a></li>
+              <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
             </ul>
           </li>
           <!-- // END user -->
         </ul>
-        <a href="login.blade.php" class="navbar-btn btn btn-primary">Log In</a>
+        @if(!Auth::check())
+          <a href="{{ route('auth.login') }}" class="navbar-btn btn btn-primary">Log In</a>
+        @endif
       </div>
     </div>
     <!-- /.navbar-collapse -->
