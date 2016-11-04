@@ -48,4 +48,15 @@ class User extends Authenticatable{
         }
         return $this->attributes['role'] == $role;
     }
+
+    public function profile(){
+        return $this->hasOne('App\UserProfile', 'user_id', 'user_id');
+    }
+
+    public function getAvatarUrl(){
+        if($this->profile->imgPath)
+            return $this->profile->imgPath;
+
+        return  "http://www.gravatar.com/avatar/" . md5(strtolower(trim($this->email))) . "?d=mm";
+    }
 }

@@ -73,6 +73,11 @@ Route::group(['middleware' => 'web'], function () {
          * all normal user routes is kept here...
          */
         Route::get('/', 'HomeController@index');
+        Route::get('/profile/edit', 'UserController@edit');
+        Route::put('/user/profile/update', [
+            'uses' => 'UserController@update',
+            'as' => 'user.update'
+        ]);
     });
     /**
      * End of iamraphson's routes

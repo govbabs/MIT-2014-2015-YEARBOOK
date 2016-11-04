@@ -28,31 +28,40 @@
                                             <h4 class="text-headline margin-none">About</h4>
                                         </div>
                                         <div class="media-right">
-                                            <a href="edit-student-profile.blade.php" class="btn btn-white btn-flat"><i class="fa fa-pencil fa-fw"></i></a>
+                                            <a href="{{ url('/profile/edit') }}"
+                                               class="btn btn-white btn-flat"><i class="fa fa-pencil fa-fw"></i></a>
                                         </div>
                                     </div>
                                 </div>
                                 <ul class="list-group aboutpad">
                                     <div class="media">
-                                        <div class="media-left"><i data-toggle="tooltip" data-placement="top" title="Occupation" class="fa fa-fw fa-briefcase fa-lg text-headline"></i></div>
+                                        <div class="media-left"><i data-toggle="tooltip" data-placement="top"
+                                           title="Occupation"
+                                           class="fa fa-fw fa-briefcase fa-lg text-headline"></i></div>
                                         <div class="media-body">
                                             <p class="yrdetail">Web Designer</p>
                                         </div>
                                     </div>
                                     <div class="media">
-                                        <div class="media-left"><i data-toggle="tooltip" data-placement="top" title="Phone Number" class="fa fa-fw fa-phone-square fa-lg text-headline"></i></div>
+                                        <div class="media-left"><i data-toggle="tooltip" data-placement="top"
+                                           title="Phone Number"
+                                           class="fa fa-fw fa-phone-square fa-lg text-headline"></i></div>
                                         <div class="media-body"><p class="yrdetail">2348066077313</p></div>
                                     </div>
                                     <div class="media">
-                                        <div class="media-left"><i data-toggle="tooltip" data-placement="top" title="Email Address" class="fa fa-fw fa-at fa-lg text-headline"></i></div>
+                                        <div class="media-left"><i data-toggle="tooltip" data-placement="top"
+                                           title="Email Address" class="fa fa-fw fa-at fa-lg text-headline"></i></div>
                                         <div class="media-body"><p class="yrdetail">nwekechidiebere@gmail.com</p></div>
                                     </div>
                                     <div class="media">
-                                        <div class="media-left"><i data-toggle="tooltip" data-placement="top" title="location" class="fa fa-fw fa-home fa-lg text-headline"></i></div>
+                                        <div class="media-left"><i data-toggle="tooltip" data-placement="top"
+                                               title="location" class="fa fa-fw fa-home fa-lg text-headline"></i></div>
                                         <div class="media-body"><p class="yrdetail">Lagos, Nigeria</p></div>
                                     </div>
                                     <div class="media">
-                                        <div class="media-left"><i data-toggle="tooltip" data-placement="top" title="Address" class="fa fa-fw fa-map-marker fa-lg text-headline"></i></div>
+                                        <div class="media-left"><i data-toggle="tooltip" data-placement="top"
+                                           title="Address"
+                                           class="fa fa-fw fa-map-marker fa-lg text-headline"></i></div>
                                         <div class="media-body"><p class="yrdetail">2120 Shefield Crescent Close GRA VGC Lekki Phase 6</p></div>
                                     </div>
                                     <div class="biopad-up">
@@ -63,11 +72,14 @@
                             </div>
                         </div>
                         <div class="item col-xs-12 col-lg-6">
-                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+                                 aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <button type="button" class="close" data-dismiss="modal">
+                                                <span aria-hidden="true">&times;</span>
+                                                <span class="sr-only">Close</span></button>
                                             <div class="mediamodal v-middle">
                                                 <div class="media-left">
                                                     <div class="icon-block half img-circle bg-purple-300">
@@ -75,7 +87,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="media-body">
-                                                    <div href="#" class="text-modalusermsg" data-toggle="modal" data-target="#myModal">Lorem ipsum dolor sit amet dolor sit meler</div>
+                                                    <div href="#" class="text-modalusermsg" data-toggle="modal"
+                                                         data-target="#myModal">Lorem ipsum dolor sit amet dolor sit meler</div>
                                                     <div class="text-light">
                                                         <div class="shifttwo">3 Minutes Ago </div> 12th May 2016
                                                     </div>

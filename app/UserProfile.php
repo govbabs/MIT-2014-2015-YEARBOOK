@@ -24,4 +24,9 @@ class UserProfile extends Model{
      * @var string
      */
     protected $table = 'mit_users_profile';
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
+
 }

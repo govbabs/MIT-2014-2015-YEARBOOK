@@ -3,16 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Auth;
 use App\Http\Requests;
+use App\User;
+use App\UserProfile;
 
-class UserController extends Controller
-{
+class UserController extends Controller{
+    protected $authUser;
 
-    // public function __construct()
-  	// {
-  	// 	$this->middleware('auth');
-  	// }
+    public function __construct(){
+        $this->authUser = Auth::user();
+    }
     /**
      * Display a all registered users
      *
@@ -76,8 +77,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id){
         //
     }
 
@@ -87,10 +87,8 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-        return view('student.editStudentProfile');
+    public function edit(){
+        return view('student.edit');
     }
 
     /**
@@ -100,9 +98,78 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request){
+        $niceNames = array(
+            'firstname' => 'First Name',
+            'lastname'  => 'Last Name',
+            'email'     => 'Email',
+            'facebook'  => 'Facebook',
+            'website'  => 'Website',
+            'twitter'  => 'Twitter',
+            'google'  => 'Google Plus',
+            'instagram'  => 'Instagram',
+            'dateofbirth'=> 'Date Of Birth'
+        );
+
+        $this->validate($request, [
+            'firstname' => 'required',
+            'lastname'  => 'required',
+            'email'     => 'required|email',
+            'dateofbirth'=> 'required|Date'
+        ], [], $niceNames);
+
+        $user = User::findOrFail($this->authUser->user_id);
+        if($request->has('website')){
+            $this->validate($request, [
+                'website'  => 'required|url'
+            ], [], $niceNames);
+            $user->profile->website = $request->input('website');
+        }
+
+       if($request->has('facebook')){
+            $this->validate($request, [
+                'facebook'  => 'required|url'
+            ], [], $niceNames);
+           $user->profile->facebook = $request->input('facebook');
+        }
+
+        if($request->has('twitter')){
+            $this->validate($request, [
+                'twitter'  => 'required|url'
+            ], [], $niceNames);
+            $user->profile->twitter = $request->input('twitter');
+        }
+
+        if($request->has('google')){
+            $this->validate($request, [
+                'google'  => 'required|url'
+            ], [], $niceNames);
+            $user->profile->google = $request->input('google');
+        }
+
+        if($request->has('instagram')){
+            $this->validate($request, [
+                'instagram'  => 'required|url'
+            ], [], $niceNames);
+            $user->profile->instagram = $request->input('instagram');
+        }
+
+        $user->first_name = $request->input('firstname');
+        $user->last_name = $request->input('lastname');
+        $user->email = $request->input('email');
+        $user->phone_no = $request->input('phone');
+        $user->profile->date_of_birth = $request->input('dateofbirth');
+        $user->profile->address = $request->input('address');
+        $user->profile->country = $request->input('country');
+        $user->profile->description = $request->input('bio');
+        $user->profile->occupation = $request->input('occupation');
+        $user->push();
+
+        return redirect()->back()->with('status', 'Profile Updated successfully');
+    }
+
+    public function updateUserProfile(){
+
     }
 
     /**
@@ -111,8 +178,6 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id){
     }
 }

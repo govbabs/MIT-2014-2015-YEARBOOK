@@ -11,11 +11,9 @@
       <div class="navbar-brand navbar-brand-logo">
         <a href="yearbook.blade.php">
         <div class="logo"> Yearbook</div>
-
         </a>
       </div>
     </div>
-
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="main-nav">
       <ul class="nav navbar-nav navbar-nav-margin-left">
@@ -32,12 +30,12 @@
         <ul class="nav navbar-nav navbar-nav-bordered navbar-nav-margin-right">
           <!-- user -->
           <li class="dropdown user active">
+
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="images/chid.jpg" alt="" class="img-circle" />
-              {{ Auth::user()->username }}<span class="caret"></span>
+                <img src="{{ Auth::user()->getAvatarUrl() }}" alt="" class="img-circle" />
+                {{ Auth::user()->username }}<span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
-
               <li><a href="student-profile.blade.php"><i class="fa fa-user"></i> Profile</a></li>
               <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
             </ul>
@@ -50,6 +48,5 @@
       </div>
     </div>
     <!-- /.navbar-collapse -->
-
   </div>
 </div>

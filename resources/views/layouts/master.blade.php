@@ -15,7 +15,6 @@
           @if (!Auth::guest())
             @include('layouts.navigation')
           @endif
-
         <!-- <div class="content"> -->
         @yield('content')
         <!--  </div> -->
@@ -26,6 +25,7 @@
             </div>
         </footer>
         <!-- // Footer -->
+        <script src="{{ asset('js/inlineJS.js') }}"></script>
         <script src="{{ asset('js/vendor/core/jquery.js') }}"></script>
         <script src="{{ asset('js/vendor/core/bootstrap.js') }}"></script>
         <script src="{{ asset('js/vendor/core/breakpoints.js') }}"></script>
@@ -44,10 +44,9 @@
         <script src="{{ asset('js/vendor/nestable/jquery.nestable.js') }}"></script>
         <script src="{{ asset('js/vendor/countdown/all.js') }}"></script>
         <script src="{{ asset('js/app/essentials.js') }}"></script>
-        <script src="{{ asset('js/app/material.js') }}"></script>
         <script src="{{ asset('js/app/layout.js') }}"></script>
         <script src="{{ asset('js/app/media.js') }}"></script>
-        <script src="{{ asset('js/mit.js') }}"></script>
+        <script src="{{ asset('js/app/material.js') }}"></script>
         @yield('scripts')
     </body>
 </html>

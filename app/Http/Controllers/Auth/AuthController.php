@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\UserProfile;
 use Validator;
 use Auth;
 use App\Http\Controllers\Controller;
@@ -87,10 +88,16 @@ class AuthController extends Controller{
         }
 
         $registeredUser = $this->create($request->all());
+        $this->saveProfileAssociate($registeredUser);
         $this->sendActivationMail($registeredUser);
         return redirect()->back()->with('status', 'We sent you an activation code. Check your email.');
     }
 
+    public function saveProfileAssociate($registeredUser){
+        $userProfile = new UserProfile;
+        $userProfile->user()->associate($registeredUser);
+        $userProfile->save();
+    }
     public function validateToken($token){
         $user = User::where('token', $token)->first();
         if(is_null($user)){

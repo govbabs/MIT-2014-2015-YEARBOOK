@@ -3,7 +3,7 @@
     <div class="media v-middle">
       <div class="media-left text-center">
         <a href="#">
-          <img src="images/chid.jpg" alt="people" class="img-circle width-80" />
+          <img src="{{ Auth::user()->getAvatarUrl() }}" alt="people" class="img-circle width-80" />
         </a>
       </div>
       <div class="media-body">
