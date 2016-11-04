@@ -108,6 +108,7 @@ class UserController extends Controller{
             'twitter'  => 'Twitter',
             'google'  => 'Google Plus',
             'instagram'  => 'Instagram',
+            'linkedin'  => 'Linkedin',
             'dateofbirth'=> 'Date Of Birth'
         );
 
@@ -115,7 +116,6 @@ class UserController extends Controller{
             'firstname' => 'required',
             'lastname'  => 'required',
             'email'     => 'required|email',
-            'dateofbirth'=> 'required|Date'
         ], [], $niceNames);
 
         $user = User::findOrFail($this->authUser->user_id);
@@ -145,6 +145,13 @@ class UserController extends Controller{
                 'google'  => 'required|url'
             ], [], $niceNames);
             $user->profile->google = $request->input('google');
+        }
+
+        if($request->has('linkedin')){
+            $this->validate($request, [
+                'linkedin'  => 'required|url'
+            ], [], $niceNames);
+            $user->profile->linkedin = $request->input('linkedin');
         }
 
         if($request->has('instagram')){

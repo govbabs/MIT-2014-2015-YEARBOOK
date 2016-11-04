@@ -274,6 +274,23 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-2 control-label"
+                                                           for="linkedin">Linkedin</label>
+                                                    <div class="col-md-6">
+                                                        <div class="form-control-material">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-linkedin"></i></span>
+                                                                <input type="text" class="form-control"
+                                                                       value="{{ Auth::user()->profile->linkedin }}"
+                                                                       id="linkedin" name="linkedin"
+                                                                       placeholder="Enter your Linkedin URL profile here">
+                                                                <label for="linkedin">Linkedin</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label"
                                                            for="instagram">Instagram</label>
                                                     <div class="col-md-6">
                                                         <div class="form-control-material">
