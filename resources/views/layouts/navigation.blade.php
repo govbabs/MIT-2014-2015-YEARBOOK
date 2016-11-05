@@ -19,10 +19,10 @@
       <ul class="nav navbar-nav navbar-nav-margin-left">
 
         <li class="dropdown">
-          <a href="student-profile.blade.php"> Profile </a>
+          <a href="{{ url('/') }}"> Profile </a>
         </li>
         <li class="dropdown active">
-          <a href="about.blade.php">About This Project </a>
+          <a href="{{ url('/about') }}">About This Project </a>
         </li>
 
       </ul>

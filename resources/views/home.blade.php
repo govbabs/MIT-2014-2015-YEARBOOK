@@ -39,34 +39,45 @@
                                            title="Occupation"
                                            class="fa fa-fw fa-briefcase fa-lg text-headline"></i></div>
                                         <div class="media-body">
-                                            <p class="yrdetail">Web Designer</p>
+                                            <p class="yrdetail">{{ Auth::user()->profile->occupation }}</p>
                                         </div>
                                     </div>
                                     <div class="media">
                                         <div class="media-left"><i data-toggle="tooltip" data-placement="top"
                                            title="Phone Number"
                                            class="fa fa-fw fa-phone-square fa-lg text-headline"></i></div>
-                                        <div class="media-body"><p class="yrdetail">2348066077313</p></div>
+                                        <div class="media-body">
+                                            <p class="yrdetail">{{ Auth::user()->phone_no }}</p>
+                                        </div>
                                     </div>
                                     <div class="media">
                                         <div class="media-left"><i data-toggle="tooltip" data-placement="top"
-                                           title="Email Address" class="fa fa-fw fa-at fa-lg text-headline"></i></div>
-                                        <div class="media-body"><p class="yrdetail">nwekechidiebere@gmail.com</p></div>
+                                           title="Email Address" class="fa fa-fw fa-at fa-lg text-headline"></i>
+                                        </div>
+                                        <div class="media-body">
+                                            <p class="yrdetail">{{ Auth::user()->email }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <i data-toggle="tooltip" data-placement="top" title="location"
+                                               class="fa fa-fw fa-home fa-lg text-headline"></i>
+                                        </div>
+                                        <div class="media-body">
+                                            <p class="yrdetail">{{ Auth::user()->profile->country }}</p>
+                                        </div>
                                     </div>
                                     <div class="media">
                                         <div class="media-left"><i data-toggle="tooltip" data-placement="top"
-                                               title="location" class="fa fa-fw fa-home fa-lg text-headline"></i></div>
-                                        <div class="media-body"><p class="yrdetail">Lagos, Nigeria</p></div>
-                                    </div>
-                                    <div class="media">
-                                        <div class="media-left"><i data-toggle="tooltip" data-placement="top"
-                                           title="Address"
-                                           class="fa fa-fw fa-map-marker fa-lg text-headline"></i></div>
-                                        <div class="media-body"><p class="yrdetail">2120 Shefield Crescent Close GRA VGC Lekki Phase 6</p></div>
+                                           title="Address" class="fa fa-fw fa-map-marker fa-lg text-headline"></i>
+                                        </div>
+                                        <div class="media-body">
+                                            <p class="yrdetail">{{ Auth::user()->profile->address }}</p>
+                                        </div>
                                     </div>
                                     <div class="biopad-up">
                                         <h4 class="text-headline">Bio:</h4>
-                                        <p class="biopad">So if you have the time, and I assure you that you do, get ready for a journey that is certain to, if not buy you more time to do what you like.So if you have the time, and I assure you that you do, get ready for a journey that is certain to, if not buy you more time to do what you like.</p>
+                                        <p class="biopad">{{ Auth::user()->profile->description }}</p>
                                     </div>
                                 </ul>
                             </div>

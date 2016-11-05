@@ -53,7 +53,6 @@
                                 <li class="forgot-password">
                                     <a href="{{ url('/password/reset') }}">Forgot password?</a>
                                 </li>
-                                <li class="active">About this project</li>
                             </ol>
                         </div>
                     </section>
