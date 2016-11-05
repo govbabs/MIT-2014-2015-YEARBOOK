@@ -22,7 +22,7 @@
                                     <!-- Tabs -->
                                     <ul class="nav nav-tabs">
                                         <li>
-                                            <a href="#">
+                                            <a href="{{ url('/account/edit') }}">
                                                 <i class="fa fa-fw fa-lock"></i>
                                                 <span class="hidden-sm hidden-xs">Manage Account</span>
                                             </a>

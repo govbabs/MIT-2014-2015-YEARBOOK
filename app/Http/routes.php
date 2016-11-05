@@ -78,6 +78,12 @@ Route::group(['middleware' => 'web'], function () {
             'uses' => 'UserController@update',
             'as' => 'user.update'
         ]);
+
+        Route::get('/account/edit', 'AccountController@edit');
+        Route::put('/user/account/update', [
+            'uses' => 'AccountController@update',
+            'as' => 'account.update'
+        ]);
     });
     /**
      * End of iamraphson's routes

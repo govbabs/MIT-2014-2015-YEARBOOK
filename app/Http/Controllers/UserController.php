@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Http\Requests;
 use App\User;
-use App\UserProfile;
 use Carbon\Carbon;
 
 class UserController extends Controller{
@@ -20,10 +19,8 @@ class UserController extends Controller{
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
       $users = User::paginate(10);
-
       return view('students', compact('users'));
     }
 
@@ -32,9 +29,7 @@ class UserController extends Controller{
      *
      * @return \Illuminate\Http\Response
      */
-    public function getUserByMatricNumber()
-    {
-
+    public function getUserByMatricNumber(){
       return view('yearbook');
     }
 
@@ -44,10 +39,7 @@ class UserController extends Controller{
      *
      * @return \Illuminate\Http\Response
      */
-    public function userProfile()
-    {
-
-
+    public function userProfile(){
         return view('student-profile');
     }
 
@@ -56,8 +48,7 @@ class UserController extends Controller{
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create(){
         //
     }
 
@@ -67,8 +58,7 @@ class UserController extends Controller{
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         //
     }
 

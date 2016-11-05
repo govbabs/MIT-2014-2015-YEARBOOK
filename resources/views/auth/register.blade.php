@@ -75,8 +75,9 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="form-control-material">
-                                        <input id="password_confirmation" name="password_confirmation" type="password"
-                                               class="form-control" placeholder="Password Confirmation">
+                                        <input id="password_confirmation" name="password_confirmation"
+                                               type="password" class="form-control"
+                                               placeholder="Password Confirmation">
                                         <label for="password_confirmation">Re-type password</label>
                                     </div>
                                 </div>
