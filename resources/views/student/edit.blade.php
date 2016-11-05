@@ -108,7 +108,7 @@
                                                     <div class="col-md-6">
                                                         <input id="dateofbirth" type="text" name="dateofbirth"
                                                            class="form-control datepicker"
-                                                           value="{{ Auth::user()->profile->date_of_birth }}">
+                                                           value="{{ Auth::user()->profile->formattedDateOfBirth() }}">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">

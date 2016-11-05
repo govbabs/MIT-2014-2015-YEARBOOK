@@ -7,6 +7,7 @@ use Auth;
 use App\Http\Requests;
 use App\User;
 use App\UserProfile;
+use Carbon\Carbon;
 
 class UserController extends Controller{
     protected $authUser;
@@ -116,6 +117,7 @@ class UserController extends Controller{
             'firstname' => 'required',
             'lastname'  => 'required',
             'email'     => 'required|email',
+            'dateofbirth'=> 'required|Date'
         ], [], $niceNames);
 
         $user = User::findOrFail($this->authUser->user_id);
@@ -165,7 +167,7 @@ class UserController extends Controller{
         $user->last_name = $request->input('lastname');
         $user->email = $request->input('email');
         $user->phone_no = $request->input('phone');
-        $user->profile->date_of_birth = $request->input('dateofbirth');
+        $user->profile->date_of_birth = Carbon::parse($request->input('dateofbirth'))->format('Y-m-d');
         $user->profile->address = $request->input('address');
         $user->profile->country = $request->input('country');
         $user->profile->description = $request->input('bio');

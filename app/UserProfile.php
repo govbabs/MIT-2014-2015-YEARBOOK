@@ -6,6 +6,7 @@
  * Time: 12:33
  */
 namespace App;
+use Carbon\Carbon;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -24,6 +25,11 @@ class UserProfile extends Model{
      * @var string
      */
     protected $table = 'mit_users_profile';
+
+
+    public function formattedDateOfBirth(){
+        return Carbon::parse($this->date_of_birth)->format('m/d/Y');
+    }
 
     public function user(){
         return $this->belongsTo('App\User');
