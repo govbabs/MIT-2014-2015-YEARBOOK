@@ -63,14 +63,13 @@
                                                         <div class="media v-middle">
                                                             <div class="media-left">
                                                                 <div class="icon-block width-100 bg-grey-100">
-                                                                    <i class="fa fa-photo text-light"></i>
+                                                                    <img src="{{ Auth::user()->getAvatarUrl() }}"
+                                                                         alt="{{ Auth::user()->username }}"
+                                                                         class="img-circle width-80" />
                                                                 </div>
                                                             </div>
                                                             <div class="media-body">
-                                                                <a href="#" data-z="0.5" data-hover-z="1"
-                                                               class="btn btn-white btn-sm paper-shadow relative"
-                                                                   data-animated> Add Image
-                                                                    <i class="fa fa-upl"></i></a>
+                                                                <input type="file" name="avatar" id="avatar" />
                                                             </div>
                                                         </div>
                                                     </div>

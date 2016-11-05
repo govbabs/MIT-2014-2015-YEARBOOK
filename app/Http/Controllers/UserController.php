@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Http\Requests;
 use App\User;
+use Cloudder;
 use Carbon\Carbon;
 
 class UserController extends Controller{
@@ -100,7 +101,8 @@ class UserController extends Controller{
             'google'  => 'Google Plus',
             'instagram'  => 'Instagram',
             'linkedin'  => 'Linkedin',
-            'dateofbirth'=> 'Date Of Birth'
+            'dateofbirth'=> 'Date Of Birth',
+            'avatar' => 'Avatar'
         );
 
         $this->validate($request, [
@@ -111,6 +113,19 @@ class UserController extends Controller{
         ], [], $niceNames);
 
         $user = User::findOrFail($this->authUser->user_id);
+
+        if($request->hasFile('avatar')){
+            $this->validate($request, [
+                'avatar' => 'mimes:jpg,jpeg,bmp,png|between:1,7000',
+            ], [], $niceNames);
+
+            $file = $request->file('avatar')->getRealPath();
+            Cloudder::upload($file, null);
+            list($width, $height) = getimagesize($file);
+            $user->profile->imgPath =
+                Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height" => $height]);
+        }
+
         if($request->has('website')){
             $this->validate($request, [
                 'website'  => 'required|url'
