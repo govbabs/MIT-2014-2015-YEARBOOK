@@ -125,6 +125,8 @@ class AuthController extends Controller{
             'password' => $request->input('password')])) {
 
             return $this->authenticated($request, Auth::user());
+        } else {
+            return back()->with('error','Invalid login credentials!!');
         }
     }
 

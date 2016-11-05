@@ -14,6 +14,11 @@
                             <h1 class="margin-none">Sign In</h1>
                         </div>
                         <div class="panel-body">
+                            @if (session('error'))
+                                <div class="alert alert-danger">
+                                    {{ session('error') }}
+                                </div>
+                            @endif
                             @if (session('warning'))
                                 <div class="alert alert-warning">
                                     {{ session('warning') }}
