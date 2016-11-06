@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
       </button>
       <div class="navbar-brand navbar-brand-logo">
-        <a href="yearbook.blade.php">
+        <a href="{{ route('yearbook') }}">
         <div class="logo"> Yearbook</div>
         </a>
       </div>

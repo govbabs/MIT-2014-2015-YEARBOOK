@@ -87,6 +87,11 @@ Route::group(['middleware' => 'web'], function () {
             'uses' => 'AccountController@update',
             'as' => 'account.update'
         ]);
+
+        Route::get('/yearbook', [
+            'uses' => 'YearController@index',
+            'as' => 'yearbook'
+        ]);
     });
     /**
      * End of iamraphson's routes
