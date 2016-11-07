@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -22,7 +23,8 @@ class YearController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        return view('yearbook.index');
+        $users = User::where('active', true)->paginate(12);
+        return view('yearbook.index')->withUsers($users);
     }
 
 }

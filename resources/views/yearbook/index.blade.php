@@ -168,288 +168,55 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
-
-
-                        <div class="col-sm-6 col-md-3 text-center">
-                            <div class="panel panel-default paper-shadow" data-z="0.5">
-
-                                <div class="cover overlay cover-image-full hover" style="height: 150px;">
-                                    <img src="images/chid.jpg" alt="person" class="width-100pc">
+                        @foreach($users as $user)
+                            <div class="col-sm-6 col-md-3 text-center">
+                                <div class="panel panel-default paper-shadow" data-z="0.5">
+                                    <div class="cover overlay cover-image-full hover" style="height: 150px;">
+                                        <img src="{{ $user->getAvatarUrl() }}" alt="person" class="width-100pc">
+                                    </div>
+                                    <hr class="margin-none">
+                                    <div class="panel-body">
+                                        <a class="text-headline">{{ $user->first_name }} {{ $user->last_name }}</a>
+                                    </div>
+                                    <hr>
+                                    <div class="panel-body">
+                                        @if(!is_null($user->profile->facebook))
+                                            <span>
+                                                <a href="{{ $user->profile->facebook }}" target="_blank"
+                                                   class="btn btn-indigo-500 btn-circle">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </span>
+                                        @endif
+                                        @if(!is_null($user->profile->twitter))
+                                            <span>
+                                                <a href="{{ $user->profile->twitter }}" target="_blank"
+                                                   class="btn btn-blue-500 btn-circle">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                            </span>
+                                        @endif
+                                        @if(!is_null($user->profile->google))
+                                            <span>
+                                                <a href="{{ $user->profile->google }}" target="_blank"
+                                                   class="btn btn-danger btn-circle">
+                                                        <i class="fa fa-google-plus"></i>
+                                                </a>
+                                            </span>
+                                        @endif
+                                        @if(!is_null($user->profile->linkedin))
+                                            <span>
+                                                <a href="{{ $user->profile->linkedin }}" target="_blank"
+                                                   class="btn btn-blue-500 btn-circle">
+                                                    <i class="fa fa-linkedin"></i>
+                                                </a>
+                                            </span>
+                                        @endif
+                                    </div>
                                 </div>
-
-                                <hr class="margin-none">
-                                <div class="panel-body"><a href="#" class="text-headline" data-toggle="modal" data-target="#myModal">Chidi Nweke</a></div>
-                                <hr>
-                                <div class="panel-body">
-                                    <span><a href="#" class="btn btn-indigo-500 btn-circle"><i class="fa fa-facebook"></i></a></span>
-                                    <span><a href="#" class="btn btn-blue-500 btn-circle"><i class="fa fa-twitter"></i></a></span>
-                                    <span><a href="#" class="btn btn-danger btn-circle"><i class="fa fa-google-plus"></i></a></span>
-                                    <span><a href="#" class="btn btn-blue-500 btn-circle"><i class="fa fa-linkedin"></i></a></span>
-
-                                </div>
-
-
                             </div>
-                        </div>
-
-
-                        <div class="col-sm-6 col-md-3 text-center">
-                            <div class="panel panel-default paper-shadow" data-z="0.5">
-
-                                <div class="cover overlay cover-image-full hover" style="height: 150px;">
-                                    <img src="images/chid.jpg" alt="person" class="width-100pc">
-                                </div>
-
-                                <hr class="margin-none">
-                                <div class="panel-body"><a href="#" class="text-headline" data-toggle="modal" data-target="#myModal">Chidi Nweke</a></div>
-                                <hr>
-                                <div class="panel-body">
-                                    <span><a href="#" class="btn btn-indigo-500 btn-circle"><i class="fa fa-facebook"></i></a></span>
-                                    <span><a href="#" class="btn btn-blue-500 btn-circle"><i class="fa fa-twitter"></i></a></span>
-                                    <span><a href="#" class="btn btn-danger btn-circle"><i class="fa fa-google-plus"></i></a></span>
-                                    <span><a href="#" class="btn btn-blue-500 btn-circle"><i class="fa fa-linkedin"></i></a></span>
-
-                                </div>
-
-
-                            </div>
-                        </div>
-
-
-                        <div class="col-sm-6 col-md-3 text-center">
-                            <div class="panel panel-default paper-shadow" data-z="0.5">
-
-                                <div class="cover overlay cover-image-full hover" style="height: 150px;">
-                                    <img src="images/chid.jpg" alt="person" class="width-100pc">
-                                </div>
-
-                                <hr class="margin-none">
-                                <div class="panel-body"><a href="#" class="text-headline" data-toggle="modal" data-target="#myModal">Chidi Nweke</a></div>
-                                <hr>
-                                <div class="panel-body">
-                                    <span><a href="#" class="btn btn-indigo-500 btn-circle"><i class="fa fa-facebook"></i></a></span>
-                                    <span><a href="#" class="btn btn-blue-500 btn-circle"><i class="fa fa-twitter"></i></a></span>
-                                    <span><a href="#" class="btn btn-danger btn-circle"><i class="fa fa-google-plus"></i></a></span>
-                                    <span><a href="#" class="btn btn-blue-500 btn-circle"><i class="fa fa-linkedin"></i></a></span>
-
-                                </div>
-
-
-                            </div>
-                        </div>
-
-
-                        <div class="col-sm-6 col-md-3 text-center">
-                            <div class="panel panel-default paper-shadow" data-z="0.5">
-
-                                <div class="cover overlay cover-image-full hover" style="height: 150px;">
-                                    <img src="images/chid.jpg" alt="person" class="width-100pc">
-                                </div>
-
-                                <hr class="margin-none">
-                                <div class="panel-body"><a href="#" class="text-headline" data-toggle="modal" data-target="#myModal">Chidi Nweke</a></div>
-                                <hr>
-                                <div class="panel-body">
-                                    <span><a href="#" class="btn btn-indigo-500 btn-circle"><i class="fa fa-facebook"></i></a></span>
-                                    <span><a href="#" class="btn btn-blue-500 btn-circle"><i class="fa fa-twitter"></i></a></span>
-                                    <span><a href="#" class="btn btn-danger btn-circle"><i class="fa fa-google-plus"></i></a></span>
-                                    <span><a href="#" class="btn btn-blue-500 btn-circle"><i class="fa fa-linkedin"></i></a></span>
-
-                                </div>
-
-
-                            </div>
-                        </div>
-
-
-                        <div class="col-sm-6 col-md-3 text-center">
-                            <div class="panel panel-default paper-shadow" data-z="0.5">
-
-                                <div class="cover overlay cover-image-full hover" style="height: 150px;">
-                                    <img src="images/chid.jpg" alt="person" class="width-100pc">
-                                </div>
-
-                                <hr class="margin-none">
-                                <div class="panel-body"><a href="#" class="text-headline" data-toggle="modal" data-target="#myModal">Chidi Nweke</a></div>
-                                <hr>
-                                <div class="panel-body">
-                                    <span><a href="#" class="btn btn-indigo-500 btn-circle"><i class="fa fa-facebook"></i></a></span>
-                                    <span><a href="#" class="btn btn-blue-500 btn-circle"><i class="fa fa-twitter"></i></a></span>
-                                    <span><a href="#" class="btn btn-danger btn-circle"><i class="fa fa-google-plus"></i></a></span>
-                                    <span><a href="#" class="btn btn-blue-500 btn-circle"><i class="fa fa-linkedin"></i></a></span>
-
-                                </div>
-
-
-                            </div>
-                        </div>
-
-
-                        <div class="col-sm-6 col-md-3 text-center">
-                            <div class="panel panel-default paper-shadow" data-z="0.5">
-
-                                <div class="cover overlay cover-image-full hover" style="height: 150px;">
-                                    <img src="images/chid.jpg" alt="person" class="width-100pc">
-                                </div>
-
-                                <hr class="margin-none">
-                                <div class="panel-body"><a href="#" class="text-headline" data-toggle="modal" data-target="#myModal">Chidi Nweke</a></div>
-                                <hr>
-                                <div class="panel-body">
-                                    <span><a href="#" class="btn btn-indigo-500 btn-circle"><i class="fa fa-facebook"></i></a></span>
-                                    <span><a href="#" class="btn btn-blue-500 btn-circle"><i class="fa fa-twitter"></i></a></span>
-                                    <span><a href="#" class="btn btn-danger btn-circle"><i class="fa fa-google-plus"></i></a></span>
-                                    <span><a href="#" class="btn btn-blue-500 btn-circle"><i class="fa fa-linkedin"></i></a></span>
-
-                                </div>
-
-
-                            </div>
-                        </div>
-
-
-                        <div class="col-sm-6 col-md-3 text-center">
-                            <div class="panel panel-default paper-shadow" data-z="0.5">
-
-                                <div class="cover overlay cover-image-full hover" style="height: 150px;">
-                                    <img src="images/chid.jpg" alt="person" class="width-100pc">
-                                </div>
-
-                                <hr class="margin-none">
-                                <div class="panel-body"><a class="text-headline">Chidi Nweke</a></div>
-                                <hr>
-                                <div class="panel-body">
-                                    <span><a href="#" class="btn btn-indigo-500 btn-circle"><i class="fa fa-facebook"></i></a></span>
-                                    <span><a href="#" class="btn btn-blue-500 btn-circle"><i class="fa fa-twitter"></i></a></span>
-                                    <span><a href="#" class="btn btn-danger btn-circle"><i class="fa fa-google-plus"></i></a></span>
-                                    <span><a href="#" class="btn btn-blue-500 btn-circle"><i class="fa fa-linkedin"></i></a></span>
-
-                                </div>
-
-
-                            </div>
-                        </div>
-
-
-                        <div class="col-sm-6 col-md-3 text-center">
-                            <div class="panel panel-default paper-shadow" data-z="0.5">
-
-                                <div class="cover overlay cover-image-full hover" style="height: 150px;">
-                                    <img src="images/chid.jpg" alt="person" class="width-100pc">
-                                </div>
-
-                                <hr class="margin-none">
-                                <div class="panel-body"><a class="text-headline">Chidi Nweke</a></div>
-                                <hr>
-                                <div class="panel-body">
-                                    <span><a href="#" class="btn btn-indigo-500 btn-circle"><i class="fa fa-facebook"></i></a></span>
-                                    <span><a href="#" class="btn btn-blue-500 btn-circle"><i class="fa fa-twitter"></i></a></span>
-                                    <span><a href="#" class="btn btn-danger btn-circle"><i class="fa fa-google-plus"></i></a></span>
-                                    <span><a href="#" class="btn btn-blue-500 btn-circle"><i class="fa fa-linkedin"></i></a></span>
-
-                                </div>
-
-
-                            </div>
-                        </div>
-
-
-                        <div class="col-sm-6 col-md-3 text-center">
-                            <div class="panel panel-default paper-shadow" data-z="0.5">
-
-                                <div class="cover overlay cover-image-full hover" style="height: 150px;">
-                                    <img src="images/chid.jpg" alt="person" class="width-100pc">
-                                </div>
-
-                                <hr class="margin-none">
-                                <div class="panel-body"><a class="text-headline">Chidi Nweke</a></div>
-                                <hr>
-                                <div class="panel-body">
-                                    <span><a href="#" class="btn btn-indigo-500 btn-circle"><i class="fa fa-facebook"></i></a></span>
-                                    <span><a href="#" class="btn btn-blue-500 btn-circle"><i class="fa fa-twitter"></i></a></span>
-                                    <span><a href="#" class="btn btn-danger btn-circle"><i class="fa fa-google-plus"></i></a></span>
-                                    <span><a href="#" class="btn btn-blue-500 btn-circle"><i class="fa fa-linkedin"></i></a></span>
-
-                                </div>
-
-
-                            </div>
-                        </div>
-
-
-                        <div class="col-sm-6 col-md-3 text-center">
-                            <div class="panel panel-default paper-shadow" data-z="0.5">
-
-                                <div class="cover overlay cover-image-full hover" style="height: 150px;">
-                                    <img src="images/chid.jpg" alt="person" class="width-100pc">
-                                </div>
-
-                                <hr class="margin-none">
-                                <div class="panel-body"><a class="text-headline">Chidi Nweke</a></div>
-                                <hr>
-                                <div class="panel-body">
-                                    <span><a href="#" class="btn btn-indigo-500 btn-circle"><i class="fa fa-facebook"></i></a></span>
-                                    <span><a href="#" class="btn btn-blue-500 btn-circle"><i class="fa fa-twitter"></i></a></span>
-                                    <span><a href="#" class="btn btn-danger btn-circle"><i class="fa fa-google-plus"></i></a></span>
-                                    <span><a href="#" class="btn btn-blue-500 btn-circle"><i class="fa fa-linkedin"></i></a></span>
-
-                                </div>
-
-
-                            </div>
-                        </div>
-
-
-                        <div class="col-sm-6 col-md-3 text-center">
-                            <div class="panel panel-default paper-shadow" data-z="0.5">
-
-                                <div class="cover overlay cover-image-full hover" style="height: 150px;">
-                                    <img src="images/chid.jpg" alt="person" class="width-100pc">
-                                </div>
-
-                                <hr class="margin-none">
-                                <div class="panel-body"><a class="text-headline">Chidi Nweke</a></div>
-                                <hr>
-                                <div class="panel-body">
-                                    <span><a href="#" class="btn btn-indigo-500 btn-circle"><i class="fa fa-facebook"></i></a></span>
-                                    <span><a href="#" class="btn btn-blue-500 btn-circle"><i class="fa fa-twitter"></i></a></span>
-                                    <span><a href="#" class="btn btn-danger btn-circle"><i class="fa fa-google-plus"></i></a></span>
-                                    <span><a href="#" class="btn btn-blue-500 btn-circle"><i class="fa fa-linkedin"></i></a></span>
-
-                                </div>
-
-
-                            </div>
-                        </div>
-
-
-                        <div class="col-sm-6 col-md-3 text-center">
-                            <div class="panel panel-default paper-shadow" data-z="0.5">
-
-                                <div class="cover overlay cover-image-full hover" style="height: 150px;">
-                                    <img src="images/chid.jpg" alt="person" class="width-100pc">
-                                </div>
-
-                                <hr class="margin-none">
-                                <div class="panel-body"><a class="text-headline">Chidi Nweke</a></div>
-                                <hr>
-                                <div class="panel-body">
-                                    <span><a href="#" class="btn btn-indigo-500 btn-circle"><i class="fa fa-facebook"></i></a></span>
-                                    <span><a href="#" class="btn btn-blue-500 btn-circle"><i class="fa fa-twitter"></i></a></span>
-                                    <span><a href="#" class="btn btn-danger btn-circle"><i class="fa fa-google-plus"></i></a></span>
-                                    <span><a href="#" class="btn btn-blue-500 btn-circle"><i class="fa fa-linkedin"></i></a></span>
-
-                                </div>
-
-
-                            </div>
-                        </div>
-
-
-
-
+                        @endforeach
                     </div>
-
                     <ul class="pagination margin-top-none">
                         <li class="disabled"><a href="#">«</a></li>
                         <li class="active"><a href="#">1</a></li>
@@ -457,11 +224,6 @@
                         <li><a href="#">3</a></li>
                         <li><a href="#">»</a></li>
                     </ul>
-
-
-
-
-
                 </div>
             </div>
         </div>
