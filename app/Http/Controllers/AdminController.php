@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\User;
+use Cloudder;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -33,7 +34,18 @@ class AdminController extends Controller
     public function massUpload(){
 
 
-      return view('admin.massUpload',compact('students'));
+      return view('admin.massUpload');
+    }
+
+    public function performUploadOperation(Request $request){
+      $this->validate($request, [
+          'fileToUpload' => 'required'
+      ]);
+      $file = $request->file('fileToUpload')->getRealPath();
+      Cloudder::upload($file, null);
+
+
+      return    Cloudder::show(Cloudder::getPublicId(), null);
     }
 
 

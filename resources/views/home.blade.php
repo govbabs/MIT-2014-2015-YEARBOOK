@@ -9,11 +9,13 @@
         <div class="page-section">
             <div class="row">
                 <div class="col-md-9">
+                    @include('includes.flash')
                     <div class="panel panel-default">
                         <div class="row yrshare-pad">
                             <div class="col-md-6">
-              <span class="pull-left"><span class="yr-headline">Profile Views:</span>
-              <span class="yr-padwy">3000</span></span>
+
+                                <span class="pull-left"><span class="yr-headline">Profile Views:</span>
+                                <span class="yr-padwy">3000</span></span>
                             </div>
                             <div class="col-md-6">
                             </div>

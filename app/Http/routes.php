@@ -31,6 +31,16 @@ Route::group(['middleware' => 'web'], function () {
             'uses' => 'AdminController@getAllStudents',
             'as' => 'admin.students'
         ])->where('matricNo', '[0-9]+');
+
+        Route::get('/mass-upload', [
+            'uses' => 'AdminController@massUpload',
+            'as' => 'admin.students'
+        ])->where('matricNo', '[0-9]+');
+
+        Route::post('/mass-upload', [
+            'uses' => 'AdminController@performUploadOperation',
+            'as' => 'admin.students'
+        ])->where('matricNo', '[0-9]+');
     });
     /**
      * End of Administrator route
