@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
       </button>
       <div class="navbar-brand navbar-brand-logo">
-        <a href="yearbook.blade.php">
+        <a href="{{ route('yearbook') }}">
         <div class="logo"> Yearbook</div>
         </a>
       </div>
@@ -19,10 +19,10 @@
       <ul class="nav navbar-nav navbar-nav-margin-left">
 
         <li class="dropdown">
-          <a href="student-profile.blade.php"> Profile </a>
+          <a href="{{ url('/') }}"> Profile </a>
         </li>
         <li class="dropdown active">
-          <a href="about.blade.php">About This Project </a>
+          <a href="{{ url('/about') }}">About This Project </a>
         </li>
 
       </ul>

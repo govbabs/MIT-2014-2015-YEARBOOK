@@ -65,7 +65,7 @@
                                                                 <div class="icon-block width-100 bg-grey-100">
                                                                     <img src="{{ Auth::user()->getAvatarUrl() }}"
                                                                          alt="{{ Auth::user()->username }}"
-                                                                         class="img-circle width-80" />
+                                                                         class="width-100" />
                                                                 </div>
                                                             </div>
                                                             <div class="media-body">

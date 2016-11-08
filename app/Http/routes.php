@@ -68,6 +68,9 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('password/reset', 'Auth\PasswordController@reset');
     Route::get('/logout', ['uses' => 'Auth\AuthController@logout', 'as' => 'logout']);
 
+    Route::get('about', function(){
+        return view('about');
+    });
     Route::group(['roles' => ['admin', 'user'], 'middleware' => ['auth', 'roles']], function () {
         /**
          * all normal user routes is kept here...
@@ -83,6 +86,11 @@ Route::group(['middleware' => 'web'], function () {
         Route::put('/user/account/update', [
             'uses' => 'AccountController@update',
             'as' => 'account.update'
+        ]);
+
+        Route::get('/yearbook', [
+            'uses' => 'YearController@index',
+            'as' => 'yearbook'
         ]);
     });
     /**
