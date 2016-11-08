@@ -10,6 +10,13 @@ body.login {
     overflow: hidden;
 }
 
+.white-text{
+  color:white;
+}
+
+.table{
+  padding: 16px;
+}
 .yrabout { text-align: justify; }
 
 .yr-headline {

@@ -128,6 +128,8 @@ class AuthController extends Controller{
         } else {
             return back()->with('error','Invalid login credentials!!');
         }
+
+        return "error";
     }
 
     public function authenticated(Request $request, $user){
