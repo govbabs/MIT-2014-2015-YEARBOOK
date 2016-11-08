@@ -126,6 +126,8 @@ class AuthController extends Controller{
 
             return $this->authenticated($request, Auth::user());
         }
+
+        return "error";
     }
 
     public function authenticated(Request $request, $user){

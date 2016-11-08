@@ -26,6 +26,7 @@ class AdminController extends Controller
     public function getAllStudents(){
       $students = User::all();
 
+
       return view('admin.students',compact('students'));
     }
 
