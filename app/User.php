@@ -54,7 +54,7 @@ class User extends Authenticatable{
     }
 
     public function getAvatarUrl(){
-        if(isset($this->profile->imgPath) ){
+        if($this->profile->imgPath){
             return $this->profile->imgPath;
         }
         return  "http://www.gravatar.com/avatar/" . md5(strtolower(trim($this->email))) . "?d=mm";
