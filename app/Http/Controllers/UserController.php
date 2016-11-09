@@ -123,7 +123,7 @@ class UserController extends Controller{
             Cloudder::upload($file, null);
             list($width, $height) = getimagesize($file);
             $user->profile->imgPath =
-                Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height" => $height]);
+                Cloudder::show(Cloudder::getPublicId(), ["width" => 1024, "height" => 921]);
         }
 
         if($request->has('website')){

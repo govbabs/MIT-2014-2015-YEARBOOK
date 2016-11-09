@@ -121,7 +121,8 @@
                         @foreach($users as $user)
                             <div class="col-sm-6 col-md-3 text-center">
                                 <div class="panel panel-default paper-shadow" data-z="0.5">
-                                    <div class="cover overlay cover-image-full hover" style="height: 150px;">
+                                    <div class="cover overlay cover-image-full hover"
+                                         style="height: 241px; !important;">
                                         <img src="{{ $user->getAvatarUrl() }}" alt="{{ $user->username }}"
                                              class="width-100pc">
                                     </div>

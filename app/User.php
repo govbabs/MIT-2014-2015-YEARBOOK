@@ -57,6 +57,7 @@ class User extends Authenticatable{
         if($this->profile->imgPath){
             return $this->profile->imgPath;
         }
-        return  "http://www.gravatar.com/avatar/" . md5(strtolower(trim($this->email))) . "?d=mm";
+        return  cloudinary_url("3ff3df73d91976dc8fed437a3fe6185e_a4cofz.jpg",
+            array("width" => 1024, "height" => 921, "crop" => "fill"));
     }
 }
