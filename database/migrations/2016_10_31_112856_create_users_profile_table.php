@@ -14,7 +14,7 @@ class CreateUsersProfileTable extends Migration
         Schema::create('mit_users_profile', function (Blueprint $table) {
             $table->increments('profile_id');
             $table->integer('user_id')->unsigned();
-            $table->date('date_of_birth')->useCurrent();
+            $table->date('date_of_birth')->useCurrent()->nullable();
             $table->text('address')->nullable();
             $table->text('description')->nullable();
             $table->string('country')->nullable();
@@ -25,7 +25,7 @@ class CreateUsersProfileTable extends Migration
             $table->string('google')->nullable();
             $table->string('linkedin')->nullable();
             $table->string('instagram')->nullable();
-            $table->string('imgPath');
+            $table->string('imgPath')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('user_id')->on('mit_users')->onDelete('cascade')->onUpdate('cascade');
         });
