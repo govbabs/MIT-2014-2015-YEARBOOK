@@ -132,6 +132,11 @@
                                     </div>
                                     <hr>
                                     <div class="panel-body">
+                                        <span>
+                                            <a href="#" target="_blank"
+                                               class="btn  btn-circle" style="width: 0px !important;">
+                                            </a>
+                                        </span>
                                         @if(!is_null($user->profile->facebook))
                                             <span>
                                                 <a href="{{ $user->profile->facebook }}" target="_blank"
