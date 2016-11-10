@@ -174,13 +174,14 @@
                             </div>
                         @endforeach
                     </div>
-                    <ul class="pagination margin-top-none">
+                    @include('pagination.default', ['paginator' => $users])
+                    {{--<ul class="pagination margin-top-none">
                         <li class="disabled"><a href="#">«</a></li>
                         <li class="active"><a href="#">1</a></li>
                         <li><a href="#">2</a></li>
                         <li><a href="#">3</a></li>
                         <li><a href="#">»</a></li>
-                    </ul>
+                    </ul>--}}
                 </div>
             </div>
         </div>
