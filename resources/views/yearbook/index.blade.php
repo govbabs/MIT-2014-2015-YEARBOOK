@@ -169,19 +169,20 @@
                                                 </a>
                                             </span>
                                         @endif
+                                        @if(!is_null($user->profile->instagram))
+                                            <span>
+                                                <a href="{{ $user->profile->instagram }}" target="_blank"
+                                                   class="btn btn-brown-600 btn-circle">
+                                                    <i class="fa fa-instagram"></i>
+                                                </a>
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                         @endforeach
                     </div>
                     @include('pagination.default', ['paginator' => $users])
-                    {{--<ul class="pagination margin-top-none">
-                        <li class="disabled"><a href="#">«</a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">»</a></li>
-                    </ul>--}}
                 </div>
             </div>
         </div>
