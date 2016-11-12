@@ -98,7 +98,8 @@ class UserController extends Controller{
             'facebook'  => 'Facebook',
             'website'  => 'Website',
             'twitter'  => 'Twitter',
-            'google'  => 'Google Plus',
+            'sex'      => 'Sex',
+            'google'   => 'Google Plus',
             'instagram'  => 'Instagram',
             'linkedin'  => 'Linkedin',
             'dateofbirth'=> 'Date Of Birth',
@@ -108,6 +109,7 @@ class UserController extends Controller{
         $this->validate($request, [
             'firstname' => 'required',
             'lastname'  => 'required',
+            'sex'       => 'required',
             'email'     => 'required|email',
             'dateofbirth'=> 'required|Date'
         ], [], $niceNames);
@@ -172,6 +174,7 @@ class UserController extends Controller{
         $user->last_name = $request->input('lastname');
         $user->email = $request->input('email');
         $user->phone_no = $request->input('phone');
+        $user->sex = $request->input('sex');
         $user->profile->date_of_birth = Carbon::parse($request->input('dateofbirth'))->format('Y-m-d');
         $user->profile->address = $request->input('address');
         $user->profile->country = $request->input('country');

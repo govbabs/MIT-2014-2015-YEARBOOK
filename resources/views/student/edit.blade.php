@@ -102,6 +102,28 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
+                                                    <label for="sex"
+                                                           class="col-md-2 control-label">Sex</label>
+                                                    <div class="col-md-6">
+                                                        <div class="form-control-material">
+                                                            <select id="sex" name="sex" class="form-control">
+                                                                <option value="">Select Sex</option>
+                                                                <option value="M"
+                                                                    @if(Auth::user()->sex == "M")
+                                                                        {{ 'selected="selected"' }}
+                                                                    @endif
+                                                                >Male</option>
+                                                                <option value="F"
+                                                                    @if(Auth::user()->sex == "F")
+                                                                        {{ 'selected="selected"' }}
+                                                                    @endif
+                                                                >Female</option>
+                                                            </select>
+                                                            <label for="sex">Sex</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
                                                     <label for="dateofbirth"
                                                            class="col-md-2 control-label">Date of Birth</label>
                                                     <div class="col-md-6">
