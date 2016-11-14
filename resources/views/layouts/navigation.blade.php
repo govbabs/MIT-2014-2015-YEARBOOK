@@ -27,22 +27,23 @@
 
       </ul>
       <div class="navbar-right">
-        <ul class="nav navbar-nav navbar-nav-bordered navbar-nav-margin-right">
-          <!-- user -->
-          <li class="dropdown user active">
+        @if(Auth::check())
+          <ul class="nav navbar-nav navbar-nav-bordered navbar-nav-margin-right">
+            <!-- user -->
+            <li class="dropdown user active">
 
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="{{ Auth::user()->getAvatarUrl() }}" alt="" class="img-circle" />
-                {{ Auth::user()->username }}<span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="student-profile.blade.php"><i class="fa fa-user"></i> Profile</a></li>
-              <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
-            </ul>
-          </li>
-          <!-- // END user -->
-        </ul>
-        @if(!Auth::check())
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <img src="{{ Auth::user()->getAvatarUrl() }}" alt="" class="img-circle" />
+                  {{ Auth::user()->username }}<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="student-profile.blade.php"><i class="fa fa-user"></i> Profile</a></li>
+                <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
+              </ul>
+            </li>
+            <!-- // END user -->
+          </ul>
+        @else
           <a href="{{ route('auth.login') }}" class="navbar-btn btn btn-primary">Log In</a>
         @endif
       </div>

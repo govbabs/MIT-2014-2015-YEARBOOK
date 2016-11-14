@@ -12,9 +12,7 @@
         @yield('styles')
     </head>
     <body>
-          @if (!Auth::guest())
-            @include('layouts.navigation')
-          @endif
+        @include('layouts.navigation')
         <!-- <div class="content"> -->
         @yield('content')
         <!--  </div> -->

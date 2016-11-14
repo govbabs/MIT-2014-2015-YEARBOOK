@@ -27,4 +27,14 @@ class YearController extends Controller{
         return view('yearbook.index')->withUsers($users);
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($username){
+        return view('yearbook.show');
+    }
+
 }

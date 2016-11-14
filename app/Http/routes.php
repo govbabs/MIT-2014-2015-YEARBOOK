@@ -81,6 +81,12 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('about', function(){
         return view('about');
     });
+
+    Route::get('/profile/{username}', [
+        'uses' => 'YearController@show',
+        'as' => 'user.profile'
+    ]);
+
     Route::group(['roles' => ['admin', 'user'], 'middleware' => ['auth', 'roles']], function () {
         /**
          * all normal user routes is kept here...
