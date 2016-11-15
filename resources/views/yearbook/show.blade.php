@@ -12,14 +12,14 @@
                         <div class="media-left">
                             <div class="width-200 width-auto-xs">
                                 <div class="panel panel-default text-center paper-shadow" data-z="0.5">
-                                    <img src="images/chid.jpg" alt="person" class="width-100pc" />
+                                    <img src="{{ $requestedUser->profile->imgPath }}"
+                                         alt="{{ $requestedUser->username }}" class="width-100pc" />
                                     <div class="panel-body">
-                                        <a class="text-headline">Chidi Nweke</a>
+                                        <a class="text-headline">{{ $requestedUser->first_name }}
+                                            {{ $requestedUser->last_name }}</a>
                                     </div>
                                     <hr/>
-
                                 </div>
-
                                 <div class="panel panel-default">
                                     <ul class="list-group text-subhead">
                                         <li class="list-group-item">
@@ -66,16 +66,10 @@
                                 </div>
                             </div>
                         </div>
-
-
                         <div class="media-body">
-
-
                             <div class="panel panel-default paper-shadow" data-z="0.5">
-
                                 <div class="row yrshare-pad">
-
-                                    <div class="col-md-6"> <span class="pull-left"><a href="yearbook.html" class="yr-headline">Go Back to Previous Page</a> </div>
+                                    <div class="col-md-6"> <span class="pull-left"><a href="{{ route('yearbook') }}" class="yr-headline">Go Back to Previous Page</a> </div>
                                     <div class="col-md-6"> <span class="pull-right yr-headline">
       <span class="yr-headline">Share This:</span>
       <a href="#" class="fa fa-fw fa-facebook"></a>
@@ -88,7 +82,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="text-headline">
-                                        About Chidi Nweke
+                                        About {{ $requestedUser->first_name }} {{ $requestedUser->last_name }}
                                     </h4>
                                 </div>
                                 <div class="panel-body">

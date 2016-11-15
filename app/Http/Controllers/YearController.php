@@ -34,7 +34,8 @@ class YearController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function show($username){
-        return view('yearbook.show');
+        $requestedUser= User::where('username', $username)->first();
+        return view('yearbook.show')->with('requestedUser', $requestedUser);
     }
 
 }
