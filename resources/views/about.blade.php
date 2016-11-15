@@ -4,7 +4,9 @@
     About MIT E-YEAR
 @endsection
 @section('content')
-    @include('layouts.secondaryTitleBar')
+    @if(Auth::check())
+        @include('layouts.secondaryTitleBar')
+    @endif
     <div class="container">
         <div class="row">
             <div class="col-md-2"></div>

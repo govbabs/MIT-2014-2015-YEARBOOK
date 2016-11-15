@@ -5,12 +5,9 @@
 @endsection
 @section('content')
     <div class="container">
-
         <div class="page-section">
             <div class="row">
-
                 <div class="col-md-9">
-
                     <div class="media media-grid media-clearfix-xs">
                         <div class="media-left">
                             <div class="width-200 width-auto-xs">
