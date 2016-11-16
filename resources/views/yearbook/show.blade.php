@@ -4,7 +4,7 @@
     Year Book
 @endsection
 @section('content')
-    <div class="container">
+    <div class="container" xmlns="http://www.w3.org/1999/html">
         <div class="page-section">
             <div class="row">
                 <div class="col-md-9">
@@ -22,46 +22,71 @@
                                 </div>
                                 <div class="panel panel-default">
                                     <ul class="list-group text-subhead">
-                                        <li class="list-group-item">
-                                            <div class="media v-middle">
-                                                <div class="media-left">
-                                                    <i class="fa fa-facebook fa-fw text-blue-800"></i>
+                                        @if($requestedUser->profile->facebook)
+                                            <li class="list-group-item">
+                                                <div class="media v-middle">
+                                                    <div class="media-left">
+                                                        <i class="fa fa-facebook fa-fw text-blue-800"></i>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <a href="{{ $requestedUser->profile->facebook }}"
+                                                           target="_blank" class="link-text-color">Facebook</a>
+                                                    </div>
                                                 </div>
-                                                <div class="media-body">
-                                                    <a href="#" class="link-text-color">facebook</a>
+                                            </li>
+                                        @endif
+                                        @if($requestedUser->profile->twitter)
+                                            <li class="list-group-item">
+                                                <div class="media v-middle">
+                                                    <div class="media-left">
+                                                        <i class="fa fa-twitter fa-fw text-blue-300"></i>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <a href="{{ $requestedUser->profile->twitter }}"
+                                                           target="_blank" class="link-text-color">Twitter</a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="media v-middle">
-                                                <div class="media-left">
-                                                    <i class="fa fa-twitter fa-fw text-blue-300"></i>
+                                            </li>
+                                        @endif
+                                        @if($requestedUser->profile->linkedin)
+                                            <li class="list-group-item">
+                                                <div class="media v-middle">
+                                                    <div class="media-left">
+                                                        <i class="fa fa-linkedin fa-fw text-blue-300"></i>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <a href="{{ $requestedUser->profile->linkedin }}"
+                                                           target="_blank" class="link-text-color">Linkedin</a>
+                                                    </div>
                                                 </div>
-                                                <div class="media-body">
-                                                    <a href="#" class="link-text-color">twitter</a>
+                                            </li>
+                                        @endif
+                                        @if($requestedUser->profile->instagram)
+                                            <li class="list-group-item">
+                                                <div class="media v-middle">
+                                                    <div class="media-left">
+                                                        <i class="fa fa-instagram fa-fw text-pink-300"></i>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <a href="{{ $requestedUser->profile->instagram }}"
+                                                           target="_blank" class="link-text-color">Instagram</a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="media v-middle">
-                                                <div class="media-left">
-                                                    <i class="fa fa-instagram fa-fw text-pink-300"></i>
+                                            </li>
+                                        @endif
+                                        @if($requestedUser->profile->google)
+                                            <li class="list-group-item">
+                                                <div class="media v-middle">
+                                                    <div class="media-left">
+                                                        <i class="fa fa-google-plus fa-fw text-red-800"></i>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <a href="{{ $requestedUser->profile->google }}"
+                                                           target="_blank" class="link-text-color">Google-Plus</a>
+                                                    </div>
                                                 </div>
-                                                <div class="media-body">
-                                                    <a href="#" class="link-text-color">instagram</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div class="media v-middle">
-                                                <div class="media-left">
-                                                    <i class="fa fa-google-plus fa-fw text-red-800"></i>
-                                                </div>
-                                                <div class="media-body">
-                                                    <a href="#" class="link-text-color">google-plus</a>
-                                                </div>
-                                            </div>
-                                        </li>
+                                            </li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
@@ -69,14 +94,20 @@
                         <div class="media-body">
                             <div class="panel panel-default paper-shadow" data-z="0.5">
                                 <div class="row yrshare-pad">
-                                    <div class="col-md-6"> <span class="pull-left"><a href="{{ route('yearbook') }}" class="yr-headline">Go Back to Previous Page</a> </div>
-                                    <div class="col-md-6"> <span class="pull-right yr-headline">
-      <span class="yr-headline">Share This:</span>
-      <a href="#" class="fa fa-fw fa-facebook"></a>
-      <a href="#" class="fa fa-fw fa-twitter"></a>
-      <a href="#" class="fa fa-fw fa-google-plus"></a>
-      </span> </div>
-
+                                    <div class="col-md-6">
+                                        <span class="pull-left">
+                                            <a href="{{ route('yearbook') }}"
+                                               class="yr-headline">Go Back to Previous Page</a>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span class="pull-right yr-headline">
+                                            <span class="yr-headline">Share This:</span>
+                                            <a href="#" class="fa fa-fw fa-facebook"></a>
+                                            <a href="#" class="fa fa-fw fa-twitter"></a>
+                                            <a href="#" class="fa fa-fw fa-google-plus"></a>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="panel panel-default">
@@ -86,125 +117,72 @@
                                     </h4>
                                 </div>
                                 <div class="panel-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad aliquid asperiores excepturi fuga laborum maiores nihil vel voluptatibus? Architecto cum debitis deleniti exercitationem inventore maiores nostrum quibusdam, quo tenetur ut veniam veritatis vero voluptatem? Architecto cum debitis deleniti exercitationem inventore maiores nostrum quibusdam, quo tenetur ut veniam veritatis vero voluptatem?Architecto cum debitis deleniti exercitationem inventore maiores nostrum quibusdam, quo tenetur ut veniam veritatis vero voluptatem?Architecto cum debitis deleniti exercitationem inventore maiores nostrum quibusdam, quo tenetur ut veniam veritatis vero voluptatem?Architecto cum debitis deleniti exercitationem inventore maiores nostrum quibusdam, quo tenetur ut veniam veritatis vero voluptatem?Architecto cum debitis deleniti exercitationem inventore maiores nostrum quibusdam, quo tenetur ut veniam veritatis vero voluptatem?Architecto cum debitis deleniti exercitationem inventore maiores nostrum quibusdam, quo tenetur ut veniam veritatis vero voluptatem?</p>
+                                    <p>{{ $requestedUser->profile->description }}</p>
                                 </div>
                             </div>
-
-
-
-
                             <div class="panel panel-default paper-shadow" data-z="0.5">
                                 <div class="card-inner">
-
                                     <div class="media">
-                                        <div class="media-left"><i class="fa fa-fw fa-briefcase fa-lg text-headline"></i></div>
-
-
+                                        <div class="media-left">
+                                            <i class="fa fa-fw fa-briefcase fa-lg text-headline"></i>
+                                        </div>
                                         <div class="media-body">
-                                            <p class="yrdetail">Web Designer</p>
-
+                                            <p class="yrdetail">{{ $requestedUser->profile->occupation }}</p>
                                         </div>
-
                                     </div>
-
-
-
                                     <div class="media">
-                                        <div class="media-left"><i class="fa fa-fw fa-phone-square fa-lg text-headline"></i></div>
-
-
-                                        <div class="media-body"><p class="yrdetail">2348066077313</p></div>
-
+                                        <div class="media-left">
+                                            <i class="fa fa-fw fa-phone-square fa-lg text-headline"></i>
+                                        </div>
+                                        <div class="media-body">
+                                            <p class="yrdetail">{{ $requestedUser->phone_no }}</p>
+                                        </div>
                                     </div>
-
-
                                     <div class="media">
-                                        <div class="media-left"><i class="fa fa-fw fa-home fa-lg text-headline"></i></div>
-
-
+                                        <div class="media-left">
+                                            <i class="fa fa-fw fa-home fa-lg text-headline"></i>
+                                        </div>
                                         <div class="media-body"><p class="yrdetail">Lagos, Nigeria</p></div>
-
                                     </div>
-
-
-
                                     <div class="media">
-                                        <div class="media-left"><i class="fa fa-fw fa-map-marker fa-lg text-headline"></i></div>
-
-
-                                        <div class="media-body"><p class="yrdetail">2120 Shefield Crescent Close GRA VGC Lekki Phase 6</p></div>
-
-                                    </div>
-
-
-
-
-
-
-
-                                </div>
-
-
-                            </div>
-
-
-
-
-
-
-
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-
-                                </div>
-                                <div class="list-group">
-                                    <div class="list-group-item">
-
-                                        <div class="media media-clearfix-xs">
-                                            <div class="media-left text-center">
-
-
-
-                        <span class="v-center">
-                            <img src="images/chid.jpg" alt="person" class="width-100pc" />
-                        </span>
-
-
-                                            </div>
-
+                                        <div class="media-left">
+                                            <i class="fa fa-fw fa-map-marker fa-lg text-headline"></i>
                                         </div>
-
+                                        <div class="media-body">
+                                            <p class="yrdetail">{{ $requestedUser->profile->address }}</p>
+                                        </div>
                                     </div>
-
-
-
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
                     <br/>
                     <br/>
-
                 </div>
                 <div class="col-md-3">
-
                     <div class="panel panel-default" data-toggle="panel-collapse" data-open="true">
                         <div class="panel-heading panel-collapse-trigger">
                             <h4 class="panel-title">My Account</h4>
                         </div>
                         <div class="panel-body list-group">
                             <ul class="list-group list-group-menu">
-                                <li class="list-group-item"><a class="link-text-color" href="website-instructor-dashboard.html">Dashboard</a></li>
-                                <li class="list-group-item"><a class="link-text-color" href="website-instructor-profile.html">Profile</a></li>
-                                <li class="list-group-item"><a class="link-text-color" href="login.html"><span>Logout</span></a></li>
+                                <li class="list-group-item">
+                                    <a class="link-text-color" href="{{ url('/') }}">Dashboard</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a class="link-text-color" href="#">Profile</a>
+                                </li>
+                                @if(Auth::check())
+                                    <li class="list-group-item">
+                                        <a class="link-text-color" href="{{ route('logout') }}">
+                                            <span>Logout</span>
+                                        </a>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </div>
-
                     <h3>Related Profile</h3>
-
                     <div class="related-profile panel-default">
                         <div class="panel-body">
                             <div class="media media-clearfix-xs">
