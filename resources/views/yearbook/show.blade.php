@@ -12,7 +12,7 @@
                         <div class="media-left">
                             <div class="width-200 width-auto-xs">
                                 <div class="panel panel-default text-center paper-shadow" data-z="0.5">
-                                    <img src="{{ $requestedUser->profile->imgPath }}"
+                                    <img src="{{ $requestedUser->getAvatarUrl() }}"
                                          alt="{{ $requestedUser->username }}" class="width-100pc" />
                                     <div class="panel-body">
                                         <a class="text-headline">{{ $requestedUser->first_name }}
@@ -167,12 +167,13 @@
                         <div class="panel-body list-group">
                             <ul class="list-group list-group-menu">
                                 <li class="list-group-item">
-                                    <a class="link-text-color" href="{{ url('/') }}">Dashboard</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <a class="link-text-color" href="#">Profile</a>
+                                    <a class="link-text-color" href="{{ url('/') }}">Profile</a>
                                 </li>
                                 @if(Auth::check())
+                                    <li class="list-group-item">
+                                        <a class="link-text-color"
+                                           href="{{ url('/profile/edit') }}">Manage Profile</a>
+                                    </li>
                                     <li class="list-group-item">
                                         <a class="link-text-color" href="{{ route('logout') }}">
                                             <span>Logout</span>
