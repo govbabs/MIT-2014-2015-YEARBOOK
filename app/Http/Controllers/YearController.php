@@ -35,7 +35,9 @@ class YearController extends Controller{
      */
     public function show($username){
         $requestedUser= User::where('username', $username)->first();
-        return view('yearbook.show')->with('requestedUser', $requestedUser);
+        $randomUsers = User::where('username', '!=', $username)->inRandomOrder(3)->get();
+        return view('yearbook.show')
+            ->with('requestedUser', $requestedUser)->with('randomUsers', $randomUsers);
     }
 
 }

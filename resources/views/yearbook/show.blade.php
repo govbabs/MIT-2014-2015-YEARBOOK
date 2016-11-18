@@ -15,7 +15,8 @@
                                     <img src="{{ $requestedUser->getAvatarUrl() }}"
                                          alt="{{ $requestedUser->username }}" class="width-100pc" />
                                     <div class="panel-body">
-                                        <a class="text-headline">{{ $requestedUser->first_name }}
+                                        <a href="{{ route('user.profile', $requestedUser->username) }}"
+                                           class="text-headline">{{ $requestedUser->first_name }}
                                             {{ $requestedUser->last_name }}</a>
                                     </div>
                                     <hr/>
@@ -142,7 +143,9 @@
                                         <div class="media-left">
                                             <i class="fa fa-fw fa-home fa-lg text-headline"></i>
                                         </div>
-                                        <div class="media-body"><p class="yrdetail">Lagos, Nigeria</p></div>
+                                        <div class="media-body">
+                                            <p class="yrdetail">{{ $requestedUser->profile->country }}</p>
+                                        </div>
                                     </div>
                                     <div class="media">
                                         <div class="media-left">
@@ -184,73 +187,34 @@
                         </div>
                     </div>
                     <h3>Related Profile</h3>
-                    <div class="related-profile panel-default">
-                        <div class="panel-body">
-                            <div class="media media-clearfix-xs">
-                                <div class="media-left">
-                                    <div class="cover width-90 width-100pc-xs overlay cover-image-full hover" style="height: 90px;">
-                                        <span class="img icon-block s90 bg-default"></span>
-                        <span class="overlay overlay-full padding-none icon-block s90 bg-default" style="height: 90px;">
-                        <span class="v-center">
-                             <img src="images/chid.jpg" alt="person" class="width-100pc" />
-                        </span>
-                        </span>
-
-                                    </div>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading margin-v-5-3">
-                                        <a href="user-public-profile.html">Chidi Nweke</a>
-                                    </h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="related-profile panel-default">
-                        <div class="panel-body">
-                            <div class="media media-clearfix-xs">
-                                <div class="media-left">
-                                    <div class="cover width-90 width-100pc-xs overlay cover-image-full hover" style="height: 90px;">
-                                        <span class="img icon-block s90 bg-default"></span>
-                        <span class="overlay overlay-full padding-none icon-block s90 bg-default" style="height: 90px;">
-                        <span class="v-center">
-                             <img src="images/chid.jpg" alt="person" class="width-100pc" />
-                        </span>
-                        </span>
-
-                                    </div>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading margin-v-5-3">
-                                        <a href="user-public-profile.html">Chidi Nweke</a>
-                                    </h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="related-profile panel-default">
-                        <div class="panel-body">
-                            <div class="media media-clearfix-xs">
-                                <div class="media-left">
-                                    <div class="cover width-90 width-100pc-xs overlay cover-image-full hover"
-                                         style="height: 90px;">
-                                        <span class="img icon-block s90 bg-default"></span>
-                                        <span class="overlay overlay-full padding-none icon-block s90 bg-default"
-                                              style="height: 90px;">
-                                            <span class="v-center">
-                                                 <img src="images/chid.jpg" alt="person" class="width-100pc" />
+                    @foreach($randomUsers as $randomUser)
+                        <div class="related-profile panel-default">
+                            <div class="panel-body">
+                                <div class="media media-clearfix-xs">
+                                    <div class="media-left">
+                                        <div class="cover width-90 width-100pc-xs overlay cover-image-full hover"
+                                             style="height: 90px;">
+                                            <span class="img icon-block s90 bg-default"></span>
+                                            <span class="overlay overlay-full padding-none icon-block s90 bg-default"
+                                                  style="height: 90px;">
+                                                <span class="v-center">
+                                                     <img src="{{ $randomUser->getAvatarUrl() }}"
+                                                          alt="{{ $randomUser->username }}" class="width-100pc" />
+                                                </span>
                                             </span>
-                                        </span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading margin-v-5-3">
-                                        <a href="user-public-profile.html">Chidi Nweke</a>
-                                    </h4>
+                                    <div class="media-body">
+                                        <h4 class="media-heading margin-v-5-3">
+                                            <a href="{{ route('user.profile', $randomUser->username) }}"
+                                                >{{ $randomUser->first_name }}
+                                                {{ $randomUser->last_name }}</a>
+                                        </h4>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
