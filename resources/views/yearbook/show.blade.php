@@ -1,10 +1,10 @@
-@extends('layouts.master')
+@extends('layouts.yearbookmaster')
 
 @section('title')
     Year Book
 @endsection
 @section('content')
-    <div class="container" xmlns="http://www.w3.org/1999/html">
+    <div class="container">
         <div class="page-section">
             <div class="row">
                 <div class="col-md-9">
