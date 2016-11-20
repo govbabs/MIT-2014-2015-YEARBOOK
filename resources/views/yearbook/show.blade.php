@@ -104,10 +104,9 @@
                                     <div class="col-md-6">
                                         <span class="pull-right yr-headline">
                                             <span class="yr-headline">Share This:</span>
-                                            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.example.com&title=Link+description"
-                                               class="fa fa-fw fa-facebook"></a>
-                                            <a href="#" class="fa fa-fw fa-twitter"></a>
-                                            <a href="#" class="fa fa-fw fa-google-plus"></a>
+                                            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode(route('user.profile', $requestedUser->username))?>&title=<?php echo urlencode('Check out ' . $requestedUser->username . ' on MIT 2014/2015 E-YearBook')?>" class="fa fa-fw fa-facebook"></a>
+                                            <a href="https://twitter.com/intent/tweet?url=<?php echo urlencode(route('user.profile', $requestedUser->username))?>&text=<?php echo urlencode('Check out ' . $requestedUser->username . ' on MIT 2014/2015 E-YearBook')?>" target="_blank" class="fa fa-fw fa-twitter"></a>
+                                            <a href="https://plus.google.com/share?url=<?php echo urlencode(route('user.profile', $requestedUser->username))?>" target="_blank" class="fa fa-fw fa-google-plus"></a>
                                         </span>
                                     </div>
                                 </div>
