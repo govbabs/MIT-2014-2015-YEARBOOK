@@ -158,7 +158,6 @@ return [
         App\Providers\RouteServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         JD\Cloudder\CloudderServiceProvider::class,
-
     ],
 
     /*
@@ -200,13 +199,12 @@ return [
         'Route' => Illuminate\Support\Facades\Route::class,
         'Schema' => Illuminate\Support\Facades\Schema::class,
         'Session' => Illuminate\Support\Facades\Session::class,
-        'Storage' => Illuminate\Support\Facades\Storage::class,
-        'URL' => Illuminate\Support\Facades\URL::class,
+        'Storage'   => Illuminate\Support\Facades\Storage::class,
+        'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
-        'View' => Illuminate\Support\Facades\View::class,
-        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-        'Cloudder' => JD\Cloudder\Facades\Cloudder::class,
-
+        'View'      => Illuminate\Support\Facades\View::class,
+        'Excel'     => Maatwebsite\Excel\Facades\Excel::class,
+        'Cloudder'  => JD\Cloudder\Facades\Cloudder::class
     ],
 
 ];
