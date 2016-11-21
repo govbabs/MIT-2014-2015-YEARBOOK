@@ -60,4 +60,9 @@ class User extends Authenticatable{
         return  cloudinary_url("3ff3df73d91976dc8fed437a3fe6185e_a4cofz.jpg",
             array("width" => 1024, "height" => 921, "crop" => "fill"));
     }
+
+    public function posts()
+    {
+        return $this->hasMany('App\Timeline');
+    }
 }

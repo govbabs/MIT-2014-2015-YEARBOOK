@@ -26,8 +26,13 @@ Route::group(['middleware' => 'web'], function () {
             'as' => 'adminProfile'
         ])->where('matricNo', '[0-9]+');
 
-        Route::get('/addPost', [
+        Route::get('/new-post', [
             'uses' => 'AdminController@addPost',
+            'as' => 'adminNewPost'
+        ]);
+
+        Route::post('/new-post', [
+            'uses' => 'AdminController@updateTimeline',
             'as' => 'adminNewPost'
         ]);
 
@@ -95,7 +100,10 @@ Route::group(['middleware' => 'web'], function () {
         /**
          * all normal user routes is kept here...
          */
-        Route::get('/', 'HomeController@index');
+        Route::get('/', [
+            'uses'=>'HomeController@index',
+            'as' => 'home'
+        ]);
         Route::get('/profile/edit', 'UserController@edit');
         Route::put('/user/profile/update', [
             'uses' => 'UserController@update',
