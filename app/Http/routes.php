@@ -86,7 +86,7 @@ Route::group(['middleware' => 'web'], function () {
         return view('about');
     });
 
-    Route::get('/profile/{username}', [
+    Route::get('/{username}/profile', [
         'uses' => 'YearController@show',
         'as' => 'user.profile'
     ]);

@@ -9717,3 +9717,18 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   border-radius: 0;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
+
+.provision-status{
+  font-family: ProximaNova-Regular, 'Proxima N W15 Reg', Helvetica, sans-serif;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+  padding: 16px;
+  font-size: 14px;
+  z-index: 2000;
+}
+.provision-status-orange {
+  background-color: #EDCECF;
+  color: #BE3C51;
+}
+

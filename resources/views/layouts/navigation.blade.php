@@ -1,5 +1,10 @@
 <!-- Fixed navbar -->
 <div class="navbar navbar-default navbar-fixed-top navbar-size-large navbar-size-xlarge paper-shadow" data-z="0" data-animated role="navigation">
+  @if(Auth::user()->active == false)
+    <div role="provisionFail" class="provision-status provision-status-orange">
+      Your account is currently being provisioned. You can start exploring, and we'll let you know when your profile appears in the yearbook.
+    </div>
+  @endif
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
@@ -37,7 +42,7 @@
                   {{ Auth::user()->username }}<span class="caret"></span>
               </a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="student-profile.blade.php"><i class="fa fa-user"></i> Profile</a></li>
+                <li><a href="{{ url('/') }}"><i class="fa fa-user"></i> Profile</a></li>
                 <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
               </ul>
             </li>

@@ -1,10 +1,10 @@
-@extends('layouts.master')
+@extends('layouts.yearbookmaster')
 
 @section('title')
     Year Book
 @endsection
 @section('content')
-    <div class="container" xmlns="http://www.w3.org/1999/html">
+    <div class="container">
         <div class="page-section">
             <div class="row">
                 <div class="col-md-9">
@@ -12,10 +12,11 @@
                         <div class="media-left">
                             <div class="width-200 width-auto-xs">
                                 <div class="panel panel-default text-center paper-shadow" data-z="0.5">
-                                    <img src="{{ $requestedUser->profile->imgPath }}"
+                                    <img src="{{ $requestedUser->getAvatarUrl() }}"
                                          alt="{{ $requestedUser->username }}" class="width-100pc" />
                                     <div class="panel-body">
-                                        <a class="text-headline">{{ $requestedUser->first_name }}
+                                        <a href="{{ route('user.profile', $requestedUser->username) }}"
+                                           class="text-headline">{{ $requestedUser->first_name }}
                                             {{ $requestedUser->last_name }}</a>
                                     </div>
                                     <hr/>
@@ -103,9 +104,9 @@
                                     <div class="col-md-6">
                                         <span class="pull-right yr-headline">
                                             <span class="yr-headline">Share This:</span>
-                                            <a href="#" class="fa fa-fw fa-facebook"></a>
-                                            <a href="#" class="fa fa-fw fa-twitter"></a>
-                                            <a href="#" class="fa fa-fw fa-google-plus"></a>
+                                            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode(route('user.profile', $requestedUser->username))?>&title=<?php echo urlencode('Check out ' . $requestedUser->username . ' on MIT 2014/2015 E-YearBook')?>" class="fa fa-fw fa-facebook"></a>
+                                            <a href="https://twitter.com/intent/tweet?url=<?php echo urlencode(route('user.profile', $requestedUser->username))?>&text=<?php echo urlencode('Check out ' . $requestedUser->username . ' on MIT 2014/2015 E-YearBook')?>" target="_blank" class="fa fa-fw fa-twitter"></a>
+                                            <a href="https://plus.google.com/share?url=<?php echo urlencode(route('user.profile', $requestedUser->username))?>" target="_blank" class="fa fa-fw fa-google-plus"></a>
                                         </span>
                                     </div>
                                 </div>
@@ -142,7 +143,9 @@
                                         <div class="media-left">
                                             <i class="fa fa-fw fa-home fa-lg text-headline"></i>
                                         </div>
-                                        <div class="media-body"><p class="yrdetail">Lagos, Nigeria</p></div>
+                                        <div class="media-body">
+                                            <p class="yrdetail">{{ $requestedUser->profile->country }}</p>
+                                        </div>
                                     </div>
                                     <div class="media">
                                         <div class="media-left">
@@ -167,12 +170,13 @@
                         <div class="panel-body list-group">
                             <ul class="list-group list-group-menu">
                                 <li class="list-group-item">
-                                    <a class="link-text-color" href="{{ url('/') }}">Dashboard</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <a class="link-text-color" href="#">Profile</a>
+                                    <a class="link-text-color" href="{{ url('/') }}">Profile</a>
                                 </li>
                                 @if(Auth::check())
+                                    <li class="list-group-item">
+                                        <a class="link-text-color"
+                                           href="{{ url('/profile/edit') }}">Manage Profile</a>
+                                    </li>
                                     <li class="list-group-item">
                                         <a class="link-text-color" href="{{ route('logout') }}">
                                             <span>Logout</span>
@@ -183,73 +187,34 @@
                         </div>
                     </div>
                     <h3>Related Profile</h3>
-                    <div class="related-profile panel-default">
-                        <div class="panel-body">
-                            <div class="media media-clearfix-xs">
-                                <div class="media-left">
-                                    <div class="cover width-90 width-100pc-xs overlay cover-image-full hover" style="height: 90px;">
-                                        <span class="img icon-block s90 bg-default"></span>
-                        <span class="overlay overlay-full padding-none icon-block s90 bg-default" style="height: 90px;">
-                        <span class="v-center">
-                             <img src="images/chid.jpg" alt="person" class="width-100pc" />
-                        </span>
-                        </span>
-
-                                    </div>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading margin-v-5-3">
-                                        <a href="user-public-profile.html">Chidi Nweke</a>
-                                    </h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="related-profile panel-default">
-                        <div class="panel-body">
-                            <div class="media media-clearfix-xs">
-                                <div class="media-left">
-                                    <div class="cover width-90 width-100pc-xs overlay cover-image-full hover" style="height: 90px;">
-                                        <span class="img icon-block s90 bg-default"></span>
-                        <span class="overlay overlay-full padding-none icon-block s90 bg-default" style="height: 90px;">
-                        <span class="v-center">
-                             <img src="images/chid.jpg" alt="person" class="width-100pc" />
-                        </span>
-                        </span>
-
-                                    </div>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading margin-v-5-3">
-                                        <a href="user-public-profile.html">Chidi Nweke</a>
-                                    </h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="related-profile panel-default">
-                        <div class="panel-body">
-                            <div class="media media-clearfix-xs">
-                                <div class="media-left">
-                                    <div class="cover width-90 width-100pc-xs overlay cover-image-full hover"
-                                         style="height: 90px;">
-                                        <span class="img icon-block s90 bg-default"></span>
-                                        <span class="overlay overlay-full padding-none icon-block s90 bg-default"
-                                              style="height: 90px;">
-                                            <span class="v-center">
-                                                 <img src="images/chid.jpg" alt="person" class="width-100pc" />
+                    @foreach($randomUsers as $randomUser)
+                        <div class="related-profile panel-default">
+                            <div class="panel-body">
+                                <div class="media media-clearfix-xs">
+                                    <div class="media-left">
+                                        <div class="cover width-90 width-100pc-xs overlay cover-image-full hover"
+                                             style="height: 90px;">
+                                            <span class="img icon-block s90 bg-default"></span>
+                                            <span class="overlay overlay-full padding-none icon-block s90 bg-default"
+                                                  style="height: 90px;">
+                                                <span class="v-center">
+                                                     <img src="{{ $randomUser->getAvatarUrl() }}"
+                                                          alt="{{ $randomUser->username }}" class="width-100pc" />
+                                                </span>
                                             </span>
-                                        </span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading margin-v-5-3">
-                                        <a href="user-public-profile.html">Chidi Nweke</a>
-                                    </h4>
+                                    <div class="media-body">
+                                        <h4 class="media-heading margin-v-5-3">
+                                            <a href="{{ route('user.profile', $randomUser->username) }}"
+                                                >{{ $randomUser->first_name }}
+                                                {{ $randomUser->last_name }}</a>
+                                        </h4>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

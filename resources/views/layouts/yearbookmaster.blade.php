@@ -12,12 +12,10 @@
         @yield('styles')
     </head>
     <body>
-          @if (!Auth::guest())
-            @include('layouts.navigation')
-          @endif
-        <!-- <div class="content"> -->
-        @yield('content')
-        <!--  </div> -->
+        @include('layouts.navigation')
+            <!-- <div class="content"> -->
+         @yield('content')
+            <!--  </div> -->
         <!-- Footer -->
         <footer class="footer">
             <div class="container">
