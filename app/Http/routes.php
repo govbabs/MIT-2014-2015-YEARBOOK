@@ -26,6 +26,10 @@ Route::group(['middleware' => 'web'], function () {
             'as' => 'adminProfile'
         ])->where('matricNo', '[0-9]+');
 
+        Route::get('/addPost', [
+            'uses' => 'AdminController@addPost',
+            'as' => 'adminNewPost'
+        ]);
 
         Route::get('/students', [
             'uses' => 'AdminController@getAllStudents',
