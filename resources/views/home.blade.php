@@ -38,23 +38,26 @@
                                 <ul class="list-group aboutpad">
                                     <div class="media">
                                         <div class="media-left"><i data-toggle="tooltip" data-placement="top"
-                                           title="Occupation"
-                                           class="fa fa-fw fa-briefcase fa-lg text-headline"></i></div>
+                                                                   title="Occupation"
+                                                                   class="fa fa-fw fa-briefcase fa-lg text-headline"></i>
+                                        </div>
                                         <div class="media-body">
                                             <p class="yrdetail">{{ Auth::user()->profile->occupation }}</p>
                                         </div>
                                     </div>
                                     <div class="media">
                                         <div class="media-left"><i data-toggle="tooltip" data-placement="top"
-                                           title="Phone Number"
-                                           class="fa fa-fw fa-phone-square fa-lg text-headline"></i></div>
+                                                                   title="Phone Number"
+                                                                   class="fa fa-fw fa-phone-square fa-lg text-headline"></i>
+                                        </div>
                                         <div class="media-body">
                                             <p class="yrdetail">{{ Auth::user()->phone_no }}</p>
                                         </div>
                                     </div>
                                     <div class="media">
                                         <div class="media-left"><i data-toggle="tooltip" data-placement="top"
-                                           title="Email Address" class="fa fa-fw fa-at fa-lg text-headline"></i>
+                                                                   title="Email Address"
+                                                                   class="fa fa-fw fa-at fa-lg text-headline"></i>
                                         </div>
                                         <div class="media-body">
                                             <p class="yrdetail">{{ Auth::user()->email }}</p>
@@ -71,7 +74,8 @@
                                     </div>
                                     <div class="media">
                                         <div class="media-left"><i data-toggle="tooltip" data-placement="top"
-                                           title="Address" class="fa fa-fw fa-map-marker fa-lg text-headline"></i>
+                                                                   title="Address"
+                                                                   class="fa fa-fw fa-map-marker fa-lg text-headline"></i>
                                         </div>
                                         <div class="media-body">
                                             <p class="yrdetail">{{ Auth::user()->profile->address }}</p>
@@ -101,27 +105,56 @@
                                                 </div>
                                                 <div class="media-body">
                                                     <div href="#" class="text-modalusermsg" data-toggle="modal"
-                                                         data-target="#myModal">Lorem ipsum dolor sit amet dolor sit meler</div>
+                                                         data-target="#myModal">Lorem ipsum dolor sit amet dolor sit
+                                                        meler
+                                                    </div>
                                                     <div class="text-light">
-                                                        <div class="shifttwo">3 Minutes Ago </div> 12th May 2016
+                                                        <div class="shifttwo">3 Minutes Ago</div>
+                                                        12th May 2016
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="modal-image">
                                             <a href="#">
-                                                <img src="images/profile-cover.jpg" alt="news" />
+                                                <img src="images/profile-cover.jpg" alt="news"/>
                                             </a>
                                         </div>
                                         <div class="modal-body">
-                                            <h4 class="text-modalusermsg">Lorem ipsum dolor sit amet dolor sit meler</h4>
-                                            <p>So if you have the time, and I assure you that you do, get ready for a journey that is certain to, if not buy you more time to do what you like.So if you have the time, and I assure you that you do, get ready for a journey that is certain to, if not buy you more time to do what you like
+                                            <h4 class="text-modalusermsg">Lorem ipsum dolor sit amet dolor sit
+                                                meler</h4>
+                                            <p>So if you have the time, and I assure you that you do, get ready for a
+                                                journey that is certain to, if not buy you more time to do what you
+                                                like.So if you have the time, and I assure you that you do, get ready
+                                                for a journey that is certain to, if not buy you more time to do what
+                                                you like
                                                 </br>
-                                                So if you have the time, and I assure you that you do, get ready for a journey that is certain to, if not buy you more time to do what you like.So if you have the time, and I assure you that you do, get ready for a journey that is certain to, if not buy you more time to do what you likeSo if you have the time, and I assure you that you do, get ready for a journey that is certain to, if not buy you more time to do what you like.So if you have the time, and I assure you that you do, get ready for a journey that is certain to, if not buy you more time to do what you likeSo if you have the time, and I assure you that you do, get ready for a journey that is certain to, if not buy you more time to do what you like.So if you have the time, and I assure you that you do, get ready for a journey that is certain to, if not buy you more time to do what you likeSo if you have the time, and I assure you that you do, get ready for a journey that is certain to, if not buy you more time to do what you like.So if you have the time, and I assure you that you do, get ready for a journey that is certain to, if not buy you more time to do what you likeSo if you have the time, and I assure you that you do, get ready for a journey that is certain to, if not buy you more time to do what you like.So if you have the time, and I assure you that you do, get ready for a journey that is certain to, if not buy you more time to do what you like
+                                                So if you have the time, and I assure you that you do, get ready for a
+                                                journey that is certain to, if not buy you more time to do what you
+                                                like.So if you have the time, and I assure you that you do, get ready
+                                                for a journey that is certain to, if not buy you more time to do what
+                                                you likeSo if you have the time, and I assure you that you do, get ready
+                                                for a journey that is certain to, if not buy you more time to do what
+                                                you like.So if you have the time, and I assure you that you do, get
+                                                ready for a journey that is certain to, if not buy you more time to do
+                                                what you likeSo if you have the time, and I assure you that you do, get
+                                                ready for a journey that is certain to, if not buy you more time to do
+                                                what you like.So if you have the time, and I assure you that you do, get
+                                                ready for a journey that is certain to, if not buy you more time to do
+                                                what you likeSo if you have the time, and I assure you that you do, get
+                                                ready for a journey that is certain to, if not buy you more time to do
+                                                what you like.So if you have the time, and I assure you that you do, get
+                                                ready for a journey that is certain to, if not buy you more time to do
+                                                what you likeSo if you have the time, and I assure you that you do, get
+                                                ready for a journey that is certain to, if not buy you more time to do
+                                                what you like.So if you have the time, and I assure you that you do, get
+                                                ready for a journey that is certain to, if not buy you more time to do
+                                                what you like
                                             </p>
                                         </div>
                                         <div class="modal-footer">
-                                            <i class="fa fa-fw fa-facebook"></i><i class="fa fa-fw fa-twitter"></i><i class="fa fa-fw fa-google-plus"></i>
+                                            <i class="fa fa-fw fa-facebook"></i><i class="fa fa-fw fa-twitter"></i><i
+                                                    class="fa fa-fw fa-google-plus"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -129,99 +162,54 @@
                             <h4 class="text-headline margin-none">Yearbook Timeline</h4>
                             <p class="text-subhead text-light">Latest updates &amp; events</p>
                             <ul class="list-group relative paper-shadow" data-hover-z="0.5" data-animated="">
-                                <li class="list-group-item paper-shadow">
-                                    <div class="media v-middle">
-                                        <div class="media-left">
-                                            <div class="icon-block half img-circle bg-purple-300">
-                                                <i class="fa fa-star text-white"></i>
+                                @forelse($timeline as $post)
+                                    <li class="list-group-item paper-shadow">
+                                        <div class="media v-middle">
+                                            <div class="media-left">
+                                                <div class="icon-block half img-circle bg-purple-300">
+                                                    <i class="fa fa-star text-white"></i>
+                                                </div>
+                                            </div>
+                                            <div class="media-body">
+                                                <a href="#" class="text-subhead link-text-color" data-toggle="modal"
+                                                   data-target="#myModal">{{ str_limit($post->header, $limit = 30, $end = '...') }}</a>
+                                                <div class="text-light">
+                                                    By: <a href="#">{{$post->postBy->first_name}} {{$post->postBy->last_name}}</a>
+                                                </div>
+                                            </div>
+                                            <div class="media-right">
+                                                <div class="width-60 text-right">
+                                                    <span class="text-caption text-light">{{Carbon\Carbon::createFromTimeStamp(strtotime($post->created_at))->diffForHumans()}}</span>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="media-body">
-                                            <a href="#" class="text-subhead link-text-color" data-toggle="modal" data-target="#myModal">Lorem ipsum dolor sit amet dolor sit meler</a>
-                                            <div class="text-light">
-                                                By: <a href="#">Babs Fash</a>
-                                            </div>
-                                        </div>
-                                        <div class="media-right">
-                                            <div class="width-60 text-right">
-                                                <span class="text-caption text-light">1 hr ago</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item paper-shadow">
-                                    <div class="media v-middle">
-                                        <div class="media-left">
-                                            <div class="icon-block half img-circle bg-purple-300">
-                                                <i class="fa fa-star text-white"></i>
-                                            </div>
-                                        </div>
-                                        <div class="media-body">
-                                            <a href="#" class="text-subhead link-text-color" data-toggle="modal" data-target="#myModal">Lorem ipsum dolor sit amet dolor sit meler</a>
-                                            <div class="text-light">
-                                                By: <a href="#">Babs Fash</a>
-                                            </div>
-                                        </div>
-                                        <div class="media-right">
-                                            <div class="width-60 text-right">
-                                                <span class="text-caption text-light">2 hrs ago</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item paper-shadow">
-                                    <div class="media v-middle">
-                                        <div class="media-left">
-                                            <div class="icon-block half img-circle bg-purple-300">
-                                                <i class="fa fa-star text-white"></i>
-                                            </div>
-                                        </div>
-                                        <div class="media-body">
-                                            <a href="#" class="text-subhead link-text-color" data-toggle="modal" data-target="#myModal">Lorem ipsum dolor sit amet dolor sit meler</a>
-                                            <div class="text-light">
-                                                By: <a href="#">Babs Fash</a>
-                                            </div>
-                                        </div>
-                                        <div class="media-right">
-                                            <div class="width-60 text-right">
-                                                <span class="text-caption text-light">3 hr ago</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item paper-shadow">
-                                    <div class="media v-middle">
-                                        <div class="media-left">
-                                            <div class="icon-block half img-circle bg-purple-300">
-                                                <i class="fa fa-star text-white"></i>
-                                            </div>
-                                        </div>
-                                        <div class="media-body">
-                                            <a href="#" class="text-subhead link-text-color" data-toggle="modal" data-target="#myModal">Lorem ipsum dolor sit amet dolor sit meler</a>
-                                            <div class="text-light">
-                                                By: <a href="#">Babs Fash</a>
-                                            </div>
-                                        </div>
-                                        <div class="media-right">
-                                            <div class="width-60 text-right">
-                                                <span class="text-caption text-light">4 hr ago</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                @empty
+                                    <li class="list-group-item paper-shadow">
+                                        <p>No post available at this time.</p>
+                                    </li>
+
+                                @endforelse
+
                             </ul>
-                            <div class="text-center"><button class="btn btn-primary">LOAD MORE</button></div>
+                            <div class="text-center">
+
+                                {{ $timeline->links() }}
+                                {{--<button class="btn btn-primary">LOAD MORE</button>--}}
+                            </div>
                         </div>
                     </div>
                     <br/>
                     <br/>
                 </div>
                 <div class="col-md-3">
-                    <div class="modal fade yrfeature" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal fade yrfeature" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+                         aria-hidden="true">
                         <div class="modal-dialog modal-sm">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                    <button type="button" class="close" data-dismiss="modal"><span
+                                                aria-hidden="true">×</span><span class="sr-only">Close</span></button>
                                     <h4 class="modal-title" id="mySmallModalLabel">Hi, Chidi</h4>
                                 </div>
                                 <div class="modal-body">
@@ -234,7 +222,7 @@
                             </div><!-- /.modal-content -->
                         </div>
                     </div>
-                  @include('layouts.sidebarNav')
+                    @include('layouts.sidebarNav')
                 </div>
             </div>
         </div>

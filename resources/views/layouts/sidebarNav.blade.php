@@ -7,6 +7,7 @@
       <li class="list-group-item active"><a class="link-text-color" href="student-profile.blade.php">Profile</a></li>
 
       @if(Auth::user()->role == "admin")
+        <li class="list-group-item"><a class="link-text-color" data-toggle="modal" data-target=".yrfeature" href="/new-post">Add Post</a></li>
           <li class="list-group-item"><a class="link-text-color" data-toggle="modal" data-target=".yrfeature" href="/students">View Students</a></li>
           <li class="list-group-item"><a class="link-text-color" data-toggle="modal" data-target=".yrfeature" href="/mass-upload">Mass Upload</a></li>
       @endif

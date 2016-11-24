@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Timeline;
 
 class HomeController extends Controller
 {
@@ -22,6 +23,9 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        return view('home');
+        $timeline = Timeline::paginate(3);
+
+
+        return view('home',compact('timeline'));
     }
 }
