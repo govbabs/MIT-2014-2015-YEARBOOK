@@ -11,11 +11,11 @@ class CreateProfileViewTable extends Migration
      * @return void
      */
     public function up(){
-        Schema::create('mit_profile_view', function(Blueprint $table){
-            $table->integer('user_id')->unsigned()->index();
-            $table->integer('profile_viewed')->unsigned()->index();
-            $table->foreign('user_id')->references('user_id')->on('mit_users')->onDelete('cascade');
-            $table->foreign('profile_viewed')->references('user_id')->on('mit_users')->onDelete('cascade');
+        Schema::create('mit_profile_view_counter', function(Blueprint $table){
+            $table->increments('id');
+            $table->string('class_name');
+            $table->integer('object_id');
+            $table->integer('user_id');
         });
     }
 
