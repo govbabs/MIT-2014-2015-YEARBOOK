@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('phone_no')->nullable();
             $table->string('sex', 6)->nullable();
             $table->string('email')->unique();
-            $table->integer('view_counter')->default(0);
+            $table->integer('view_counter')->unsigned()->default(0);
             $table->enum('role', ['user', 'admin'])->default('user');
             $table->string('password');
             $table->string('token')->index()->nullable();

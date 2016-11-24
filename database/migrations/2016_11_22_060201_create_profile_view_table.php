@@ -17,6 +17,8 @@ class CreateProfileViewTable extends Migration
             $table->integer('object_id');
             $table->integer('user_id');
             $table->string('action');
+
+            $table->timestamps();
         });
     }
 
