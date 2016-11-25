@@ -7,7 +7,7 @@ use App\User;
 
 class Timeline extends Model
 {
-    protected $table = 'timeline';
+    protected $table = 'mit_timeline';
     protected $fillable =['header','thumbnail','description'];
 
     public function postBy()
