@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\User;
 use Illuminate\Console\Command;
 use App\UserProfile;
 
@@ -37,10 +38,24 @@ class HappyBirthday extends Command
      * @return mixed
      */
     public function handle(){
-        $profiles = UserProfile::where('date_of_birth', date('m/d'))->get();
+        $listOfMails = array();
+        /**
+         * Get all the user email
+         */
+        $allUser = User::get();
+        foreach($allUser as $user){
+            array_push($listOfMails, $user->email);
+        }
 
+        /**
+         * get all the user whose birthday is today
+         */
+        $profiles = UserProfile::where('date_of_birth', date('m/d'))->get();
         foreach($profiles as $profile ) {
-            echo $profile->user->email;
+            Mail::send('email.birthday', [], function($message) use ($listOfMails)
+            {
+                $message->to($listOfMails)->subject('This is test e-mail');
+            });
             /*if($user->has('cellphone')) {
                 SMS::to($user->cellphone)
                     ->msg('Dear ' . $user->fname . ', I wish you a happy birthday!')
