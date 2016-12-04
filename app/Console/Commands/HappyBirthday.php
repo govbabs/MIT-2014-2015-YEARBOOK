@@ -54,7 +54,7 @@ class HappyBirthday extends Command
         foreach($profiles as $profile ) {
             Mail::send('email.birthday', [], function($message) use ($listOfMails)
             {
-                $message->to($listOfMails)->subject('This is test e-mail');
+                $message->to($listOfMails)->subject('Happy Birthday Wishes');
             });
             /*if($user->has('cellphone')) {
                 SMS::to($user->cellphone)
