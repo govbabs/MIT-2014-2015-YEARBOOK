@@ -15,7 +15,7 @@
                             <div class="col-md-6">
 
                                 <span class="pull-left"><span class="yr-headline">Profile Views:</span>
-                                <span class="yr-padwy">3000</span></span>
+                                <span class="yr-padwy">{{ Auth::user()->view_counter }}</span></span>
                             </div>
                             <div class="col-md-6">
                             </div>

@@ -12,13 +12,13 @@ class CreateTimelineTable extends Migration
      */
     public function up()
     {
-        Schema::create('timeline', function (Blueprint $table) {
+        Schema::create('mit_timeline', function (Blueprint $table) {
             $table->increments('id');
             $table->string('header');
             $table->text('description');
             $table->text('thumbnail')->nullable();
             $table->integer('post_by');
-            $table->foreign('post_by')->references('id')->on('mit_users');
+            $table->foreign('post_by')->references('user_id')->on('mit_users');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateTimelineTable extends Migration
      */
     public function down()
     {
-        Schema::drop('timeline');
+        Schema::drop('mit_timeline');
     }
 }

@@ -136,10 +136,6 @@ class AuthController extends Controller{
             Auth::logout();
             return back()->with('warning',
                 'You need to confirm your account. We have sent you an activation code, please check your email.');
-        } else if(!$user->active) {
-            Auth::logout();
-            return back()->with('warning',
-                'Administrator need to approve your account.Please check back.Thanks.');
         }
         return redirect()->intended('/');
     }
