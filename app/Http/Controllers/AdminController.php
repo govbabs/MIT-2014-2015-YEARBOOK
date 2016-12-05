@@ -120,6 +120,25 @@ class AdminController extends Controller
             'post_by' => Auth::user()->user_id
         ]);
 
+        if($request->hasFile('thumbnail')){
+            $this->validate($request, [
+                'thumbnail' => 'mimes:jpg,jpeg,bmp,png|between:1,7000',
+            ]);
+
+            $file = $request->file('thumbnail')->getRealPath();
+//            Cloudder::upload($file, null);
+//            list($width, $height) = getimagesize($file);
+//            $timeline->thumbnail =
+//                Cloudder::show(Cloudder::getPublicId(), ["width" => 1024, "height" => 921]);
+
+            $destinationPath = 'images/posts'; // upload path
+            $extension = $request->file('thumbnail')->getClientOriginalExtension(); // getting image extension
+            $fileName = Auth::user()->user_id.rand(11111, 99999) . '.' . $extension; // renameing image
+            $path = $request->file('thumbnail')->move($destinationPath, $fileName);
+            $timeline->thumbnail =$path;
+        }
+
+
         $timeline->save();
         return redirect()->route('home');
     }

@@ -8,7 +8,7 @@ use App\User;
 class Timeline extends Model
 {
     protected $table = 'timeline';
-    protected $fillable =['header','thumbnail','description'];
+    protected $fillable =['header','thumbnail','description','post_by'];
 
     public function postBy()
     {
