@@ -19,12 +19,12 @@
       <td ><div style="display: block">{{$student->first_name}} {{$student->last_name}}</div></td>
       <td><div>{{$student->matricNo}}</div></td>
       @if ($student->active == 0)
-        <td><a href="#" class="btn btn-primary">ACTIVATE ACCOUNT</a> </td>
+        <td><a href="/activate-account/{{$student->user_id}}" class="btn btn-primary">ACTIVATE ACCOUNT</a> </td>
       @else
         <td><a href="#" class="btn btn-danger">DEACTIVATE ACCOUNT</a> </td>
       @endif
       @if ($student->activated == 0)
-        <td><a href="#" class="btn btn-primary">SEND MAIL VERIFICATION</a> </td>
+        <td><a href="/send-mail-verification" class="btn btn-primary">SEND MAIL VERIFICATION</a> </td>
       @else
         <td>Email verified</td>
       @endif

@@ -36,6 +36,11 @@ Route::group(['middleware' => 'web'], function () {
             'as' => 'adminNewPost'
         ]);
 
+        Route::get('/activate-account/{id}', [
+            'uses' => 'AdminController@activateAccount',
+            'as' => 'adminNewPost'
+        ]);
+
         Route::get('/students', [
             'uses' => 'AdminController@getAllStudents',
             'as' => 'admin.students'

@@ -42,6 +42,14 @@ class AdminController extends Controller
         return view('admin.massUpload');
     }
 
+    public function activateAccount($id)
+    {
+        $user= User::where('user_id', $id)->first();
+        $user->active = true;
+
+        return redirect()->route('/')->with("suc_msg", " User activated");
+    }
+
     public function performUploadOperation(Request $request)
     {
         $this->validate($request, [
