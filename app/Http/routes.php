@@ -41,6 +41,25 @@ Route::group(['middleware' => 'web'], function () {
             'as' => 'adminNewPost'
         ]);
 
+        Route::get('/send-mail-verification/{id}', [
+            'uses' => 'AdminController@sendMailVerification',
+            'as' => 'adminNewPost'
+        ]);
+
+        Route::get('/make-admin/{id}', [
+            'uses' => 'AdminController@makeAdmin',
+            'as' => 'adminNewPost'
+        ]);
+        Route::get('/make-user/{id}', [
+            'uses' => 'AdminController@makeUser',
+            'as' => 'adminNewPost'
+        ]);
+
+        Route::get('/deactivate-account/{id}', [
+            'uses' => 'AdminController@deactivateAccount',
+            'as' => 'adminNewPost'
+        ]);
+
         Route::get('/students', [
             'uses' => 'AdminController@getAllStudents',
             'as' => 'admin.students'
@@ -100,6 +119,8 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'YearController@show',
         'as' => 'user.profile'
     ]);
+
+
 
     Route::group(['roles' => ['admin', 'user'], 'middleware' => ['auth', 'roles']], function () {
         /**
