@@ -89,76 +89,54 @@
                             </div>
                         </div>
                         <div class="item col-xs-12 col-lg-6">
-                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-                                 aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal">
-                                                <span aria-hidden="true">&times;</span>
-                                                <span class="sr-only">Close</span></button>
-                                            <div class="mediamodal v-middle">
-                                                <div class="media-left">
-                                                    <div class="icon-block half img-circle bg-purple-300">
-                                                        <i class="fa fa-star text-white"></i>
+                            @foreach($timeline as $post)
+                                <div class="modal fade" id="{{$post->id}}" tabindex="-1" role="dialog"
+                                     aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    <span class="sr-only">Close</span></button>
+                                                <div class="mediamodal v-middle">
+                                                    <div class="media-left">
+                                                        <div class="icon-block half img-circle bg-purple-300">
+                                                            <i class="fa fa-star text-white"></i>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="media-body">
-                                                    <div href="#" class="text-modalusermsg" data-toggle="modal"
-                                                         data-target="#myModal">Lorem ipsum dolor sit amet dolor sit
-                                                        meler
-                                                    </div>
-                                                    <div class="text-light">
-                                                        <div class="shifttwo">3 Minutes Ago</div>
-                                                        12th May 2016
+                                                    <div class="media-body">
+                                                        <div href="#" class="text-modalusermsg" data-toggle="modal"
+                                                             data-target="#myModal">{{$post->header}}
+                                                        </div>
+                                                        <div class="text-light">
+                                                            <div class="shifttwo">{{Carbon\Carbon::createFromTimeStamp(strtotime($post->created_at))->diffForHumans()}}</div>
+
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="modal-image">
-                                            <a href="#">
-                                                <img src="images/profile-cover.jpg" alt="news"/>
-                                            </a>
-                                        </div>
-                                        <div class="modal-body">
-                                            <h4 class="text-modalusermsg">Lorem ipsum dolor sit amet dolor sit
-                                                meler</h4>
-                                            <p>So if you have the time, and I assure you that you do, get ready for a
-                                                journey that is certain to, if not buy you more time to do what you
-                                                like.So if you have the time, and I assure you that you do, get ready
-                                                for a journey that is certain to, if not buy you more time to do what
-                                                you like
-                                                </br>
-                                                So if you have the time, and I assure you that you do, get ready for a
-                                                journey that is certain to, if not buy you more time to do what you
-                                                like.So if you have the time, and I assure you that you do, get ready
-                                                for a journey that is certain to, if not buy you more time to do what
-                                                you likeSo if you have the time, and I assure you that you do, get ready
-                                                for a journey that is certain to, if not buy you more time to do what
-                                                you like.So if you have the time, and I assure you that you do, get
-                                                ready for a journey that is certain to, if not buy you more time to do
-                                                what you likeSo if you have the time, and I assure you that you do, get
-                                                ready for a journey that is certain to, if not buy you more time to do
-                                                what you like.So if you have the time, and I assure you that you do, get
-                                                ready for a journey that is certain to, if not buy you more time to do
-                                                what you likeSo if you have the time, and I assure you that you do, get
-                                                ready for a journey that is certain to, if not buy you more time to do
-                                                what you like.So if you have the time, and I assure you that you do, get
-                                                ready for a journey that is certain to, if not buy you more time to do
-                                                what you likeSo if you have the time, and I assure you that you do, get
-                                                ready for a journey that is certain to, if not buy you more time to do
-                                                what you like.So if you have the time, and I assure you that you do, get
-                                                ready for a journey that is certain to, if not buy you more time to do
-                                                what you like
-                                            </p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <i class="fa fa-fw fa-facebook"></i><i class="fa fa-fw fa-twitter"></i><i
-                                                    class="fa fa-fw fa-google-plus"></i>
+                                            @if(!is_null($post->thumbnail))
+                                                <div class="modal-image">
+                                                    <a href="#">
+                                                        <img src="/{{$post->thumbnail}}" alt="news"/>
+                                                    </a>
+                                                </div>
+                                            @endif
+                                            <div class="modal-body">
+                                                <h4 class="text-modalusermsg">{{$post->header}}</h4>
+                                                <p>{{$post->description}}
+                                                </p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <i class="fa fa-fw fa-facebook"></i><i
+                                                        class="fa fa-fw fa-twitter"></i><i
+                                                        class="fa fa-fw fa-google-plus"></i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+
+                            @endforeach
                             <h4 class="text-headline margin-none">Yearbook Timeline</h4>
                             <p class="text-subhead text-light">Latest updates &amp; events</p>
                             <ul class="list-group relative paper-shadow" data-hover-z="0.5" data-animated="">
@@ -172,9 +150,10 @@
                                             </div>
                                             <div class="media-body">
                                                 <a href="#" class="text-subhead link-text-color" data-toggle="modal"
-                                                   data-target="#myModal">{{ str_limit($post->header, $limit = 30, $end = '...') }}</a>
+                                                   data-target="#{{$post->id}}">{{ str_limit($post->header, $limit = 30, $end = '...') }}</a>
                                                 <div class="text-light">
-                                                    By: <a href="#">{{$post->postBy->first_name}} {{$post->postBy->last_name}}</a>
+                                                    By:
+                                                    <a href="#">{{$post->postBy->first_name}} {{$post->postBy->last_name}}</a>
                                                 </div>
                                             </div>
                                             <div class="media-right">

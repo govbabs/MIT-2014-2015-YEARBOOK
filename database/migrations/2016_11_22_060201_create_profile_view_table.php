@@ -29,5 +29,6 @@ class CreateProfileViewTable extends Migration
      */
     public function down(){
         //
+        Schema::drop('mit_profile_view_counter');
     }
 }

@@ -42,6 +42,14 @@ class AdminController extends Controller
         return view('admin.massUpload');
     }
 
+    public function activateAccount($id)
+    {
+        $user= User::where('user_id', $id)->first();
+        $user->active = true;
+
+        return redirect()->route('/')->with("suc_msg", " User activated");
+    }
+
     public function performUploadOperation(Request $request)
     {
         $this->validate($request, [
@@ -119,6 +127,25 @@ class AdminController extends Controller
             'thumbnail' => $request->input('thumbnail'),
             'post_by' => Auth::user()->user_id
         ]);
+
+        if($request->hasFile('thumbnail')){
+            $this->validate($request, [
+                'thumbnail' => 'mimes:jpg,jpeg,bmp,png|between:1,7000',
+            ]);
+
+            $file = $request->file('thumbnail')->getRealPath();
+//            Cloudder::upload($file, null);
+//            list($width, $height) = getimagesize($file);
+//            $timeline->thumbnail =
+//                Cloudder::show(Cloudder::getPublicId(), ["width" => 1024, "height" => 921]);
+
+            $destinationPath = 'images/posts'; // upload path
+            $extension = $request->file('thumbnail')->getClientOriginalExtension(); // getting image extension
+            $fileName = Auth::user()->user_id.rand(11111, 99999) . '.' . $extension; // renameing image
+            $path = $request->file('thumbnail')->move($destinationPath, $fileName);
+            $timeline->thumbnail =$path;
+        }
+
 
         $timeline->save();
         return redirect()->route('home');
