@@ -39,6 +39,7 @@ class HappyBirthday extends Command
      */
     public function handle(){
         $listOfMails = array();
+        $listofCelebrantsMails = array();
         /**
          * Get all the user email
          */
@@ -52,15 +53,24 @@ class HappyBirthday extends Command
          */
         $profiles = UserProfile::where('date_of_birth', date('m/d'))->get();
         foreach($profiles as $profile ) {
-            Mail::send('email.birthday', [], function($message) use ($listOfMails)
-            {
-                $message->to($listOfMails)->subject('Happy Birthday Wishes');
+            array_push($listofCelebrantsMails, $profile->user->email);
+            Mail::send('email.birthday',
+                ['body' =>
+                    $this->prepareClassMessage($profile->user->last_name,
+                        $profile->user->first_name, $profile->user->email, $profile->user->phone_no)],
+                function($message) use ($listOfMails) {
+                    $message->to($listOfMails)->subject('Happy Birthday Wishes');
             });
-            /*if($user->has('cellphone')) {
-                SMS::to($user->cellphone)
-                    ->msg('Dear ' . $user->fname . ', I wish you a happy birthday!')
-                    ->send();
-            }*/
         }
+    }
+
+    private function prepareClassMessage($lastname, $firstname, $email, $phone){
+        $msg = "Class!! It's {$firstname} {$lastname}'s birthday, Please reach out to him on {$email}";
+        if(isset($phone))
+            $msg .= " / ". $phone;
+
+        $msg .= " and send your wishes";
+
+        return $msg;
     }
 }
