@@ -39,7 +39,6 @@ class HappyBirthday extends Command
      */
     public function handle(){
         $listOfMails = array();
-        $listofCelebrantsMails = array();
         /**
          * Get all the user email
          */
@@ -53,15 +52,29 @@ class HappyBirthday extends Command
          */
         $profiles = UserProfile::where('date_of_birth', date('m/d'))->get();
         foreach($profiles as $profile ) {
-            array_push($listofCelebrantsMails, $profile->user->email);
-            Mail::send('email.birthday',
-                ['body' =>
-                    $this->prepareClassMessage($profile->user->last_name,
-                        $profile->user->first_name, $profile->user->email, $profile->user->phone_no)],
-                function($message) use ($listOfMails) {
-                    $message->to($listOfMails)->subject('Happy Birthday Wishes');
-            });
+            $this->sendMailToClassMember($listOfMails, $profile);
+            $this->sendMailToCelebrant($profile);
         }
+    }
+
+    private function sendMailToClassMember($listOfMails, $profile){
+        Mail::send('email.birthday',
+            ['body' =>
+                $this->prepareClassMessage($profile->user->last_name,
+                    $profile->user->first_name, $profile->user->email, $profile->user->phone_no)],
+            function($message) use ($listOfMails) {
+                $message->to($listOfMails)->subject('Happy Birthday Wishes');
+        });
+    }
+
+    private function sendMailToCelebrant($profile){
+        Mail::send('email.birthday',
+            ['body' =>
+                $this->prepareCelebrantMessage($profile->user->last_name,
+                    $profile->user->first_name)],
+            function($message) use ($profile) {
+                $message->to($profile->user->email)->subject('Happy Birthday Wishes');
+            });
     }
 
     private function prepareClassMessage($lastname, $firstname, $email, $phone){
@@ -72,5 +85,9 @@ class HappyBirthday extends Command
         $msg .= " and send your wishes";
 
         return $msg;
+    }
+
+    private function prepareCelebrantMessage($lastname, $firstname){
+        return  "Dear {$firstname} {$lastname},this is wishing you the best of the new year to come filled with good deeds, joy, good health and Great life, from all of us at Unilag MIT, happy birthday.";
     }
 }
