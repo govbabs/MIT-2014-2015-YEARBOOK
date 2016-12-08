@@ -9,6 +9,7 @@ use Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class PasswordController extends Controller
 {
@@ -50,7 +51,7 @@ class PasswordController extends Controller
     }
 
     protected function sendResetMail($email, $token){
-        Mail::send('auth.emails.password',
+        Mail::queue('auth.emails.password',
             ['token' => $token, 'email' => $email],
             function($message) use($email, $token) {
                 $message->to($email, $token)
@@ -62,7 +63,11 @@ class PasswordController extends Controller
         DB::table('password_resets')->where('email',  $user->email)->delete();
         $token = (new AuthController())->getToken();
         DB::table('password_resets')->insert(
-            ['email' => $user->email, 'token' => $token]
+            [
+                'email' => $user->email,
+                'token' => $token,
+                'created_at' => new Carbon
+            ]
         );
         return array($user->email, $token);
     }
