@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\User;
 use App\Timeline;
 use Cloudder;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\UploadedFile;
 
@@ -41,13 +42,50 @@ class AdminController extends Controller
 
         return view('admin.massUpload');
     }
+    public function makeAdmin($id)
+    {
+
+        $user= User::where('user_id', $id)->first();
+        $user->role = "admin";
+        $user->save();
+
+        return redirect()->route('home')->with("suc_msg", " User is now an admin");
+    }
+
+    public function makeUser($id)
+    {
+
+        $user= User::where('user_id', $id)->first();
+        $user->role = "user";
+        $user->save();
+
+        return redirect()->route('home')->with("suc_msg", " User is now a user");
+    }
 
     public function activateAccount($id)
     {
+
         $user= User::where('user_id', $id)->first();
         $user->active = true;
+        $user->save();
 
-        return redirect()->route('/')->with("suc_msg", " User activated");
+        return redirect()->route('home')->with("suc_msg", " User activated");
+    }
+
+    public function deactivateAccount($id)
+    {
+
+        $user= User::where('user_id', $id)->first();
+        $user->active = false;
+        $user->save();
+
+        return redirect()->route('home')->with("err_msg", " User deactivated");
+    }
+
+    public function sendMailVerification($id){
+        $user= User::where('user_id', $id)->first();
+        $this->sendActivationMail($user);
+        return redirect()->route('home')->with("suc_msg", " Email sent");
     }
 
     public function performUploadOperation(Request $request)
@@ -149,5 +187,32 @@ class AdminController extends Controller
 
         $timeline->save();
         return redirect()->route('home');
+    }
+
+    private function getConfirmationMail($token){
+        return "<h2 align='center'>Verify Your Email Address</h2>
+        <div>
+            Thanks for creating an account with MIT E-year Book.
+            Please follow the link below to verify your email address
+            " . url('register/verify/'. $token) . ".
+        </div>";
+    }
+
+    public function getToken(){
+        return hash_hmac('sha256', str_random(40), config('app.key'));
+    }
+
+    protected function sendActivationMail($registeredUser){
+        $token = $this->getToken();
+        //update activation code for user
+        $registeredUser->token = $token;
+        $registeredUser->save();
+
+        Mail::queue('email.verify',
+            ['body' => $this->getConfirmationMail($token)],
+            function($message) use($registeredUser) {
+                $message->to($registeredUser->email, $registeredUser->username)
+                    ->subject('Verify your email address');
+            });
     }
 }
