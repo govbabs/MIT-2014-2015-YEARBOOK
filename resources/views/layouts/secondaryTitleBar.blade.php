@@ -9,7 +9,9 @@
         </div>
         <div class="media-body">
           <h1 class="text-white text-display-1 margin-v-0">{{Auth::user()->first_name.' '.Auth::user()->last_name}}</h1>
-          <p class="text-subhead"><a class="link-white text-underline" href="yearbook.blade.php">View public profile</a></p>
+          <p class="text-subhead">
+            <a class="link-white text-underline"
+               href="{{route('user.profile', Auth::user()->username) }}">View public profile</a></p>
         </div>
 
       </div>

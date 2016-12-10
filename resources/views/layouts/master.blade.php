@@ -20,6 +20,11 @@
         <!--  </div> -->
         <!-- Footer -->
         <footer class="footer">
+            @if(Auth::check() and Auth::user()->active == false)
+                <div role="provisionFail" class="provision-status provision-status-orange">
+                    Your account is currently being provisioned. You can start exploring, and we'll let you know when your profile appears in the yearbook.
+                </div>
+            @endif
             <div class="container">
                 <strong>MIT Yearbook</strong> v1.0 &copy; Copyright 2016
             </div>

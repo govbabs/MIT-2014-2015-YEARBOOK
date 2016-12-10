@@ -35,7 +35,7 @@ class YearController extends Controller{
      */
     public function show($username){
         $requestedUser= User::where('username', $username)->first();
-        $randomUsers = User::where('username', '!=', $username)->inRandomOrder(3)->get();
+        $randomUsers = User::where('username', '!=', $username)->where('active', true)->inRandomOrder(3)->get();
         $this->view($requestedUser->user_id);
         return view('yearbook.show')
             ->with('requestedUser', $requestedUser)->with('randomUsers', $randomUsers);
@@ -78,11 +78,11 @@ class YearController extends Controller{
                     'user_id' => Auth::user()->user_id,
                     'action' => 'view'
                 ]);
-                User::where('user_id', Auth::user()->user_id)->increment('view_counter');
+                User::where('user_id', $id)->increment('view_counter');
                 return true;
             } else {
                 \Session::put($this->get_view_key($id), time());
-                User::where('user_id', Auth::user()->user_id)->increment('view_counter');
+                User::where('user_id', $id)->increment('view_counter');
                 return true;
             }
         }
